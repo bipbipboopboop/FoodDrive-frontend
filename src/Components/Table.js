@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,7 +10,7 @@ import Paper from "@mui/material/Paper";
 
 const TAX_RATE = 0.07;
 
-function ccyFormat(number) {
+function ccyFormat(num) {
   return `${num.toFixed(2)}`;
 }
 
@@ -26,11 +27,7 @@ function subtotal(items) {
   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
 }
 
-const rows = [
-  createRow("Paperclips (Box)", 100, 1.15),
-  createRow("Paper (Case)", 10, 45.99),
-  createRow("Waste Basket", 2, 17.99),
-];
+const rows = [createRow("Carbonara", 1, 5), createRow("Ice Lemon Tea", 1, 1.2)];
 
 const invoiceSubtotal = subtotal(rows);
 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
