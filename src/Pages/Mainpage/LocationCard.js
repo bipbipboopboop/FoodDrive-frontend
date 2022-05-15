@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import styled from "styled-components";
 
-import OrderModal from "./OrderModal";
-
 const Card = styled.div`
   width: 300px;
   height: 400px;
@@ -42,7 +40,7 @@ const Button = styled.button`
   text-align: center;
   border: 0px;
 `;
-export default function MenuCard({ name, description, price, image }) {
+export default function LocationCard({ name, description, price, image }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -56,19 +54,18 @@ export default function MenuCard({ name, description, price, image }) {
       <CardContent>
         <h3>{name}</h3>
         <p>{description}</p>
-        <p>${price}</p>
       </CardContent>
       <CardActions>
         <Button onClick={handleOpen}>Select</Button>
       </CardActions>
-      <OrderModal
+      {/* <OrderModal
         name={name}
         description={description}
         price={price}
         image={image}
         open={open}
         handleClose={handleClose}
-      />
+      /> */}
     </Card>
   );
 }

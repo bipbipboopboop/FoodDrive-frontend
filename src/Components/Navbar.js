@@ -6,10 +6,12 @@ import user from "../Images/User.svg";
 
 import Login from "./Login";
 import Cart from "./Cart";
+import Logo from "../Images/Logo.png";
 
 const Nav = styled.div`
   display: flex;
-  padding: 10px;
+  position: sticky;
+  top: 0;
   justify-content: space-between;
   align-items: center;
   background-color: black;
@@ -56,7 +58,7 @@ const Navbar = () => {
   return (
     <Nav>
       <div>
-        <SVG src="https://www.canadian-pizza.com/static/media/logo.36f273f5.png" />
+        <SVG src={Logo} />
       </div>
       <div
         style={{

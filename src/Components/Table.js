@@ -27,7 +27,7 @@ function subtotal(items) {
   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
 }
 
-const rows = [createRow("Carbonara", 1, 5), createRow("Ice Lemon Tea", 1, 1.2)];
+const rows = [createRow("Carbonara", 1, 5), createRow("Ice Lemon Tea", 2, 1.2)];
 
 const invoiceSubtotal = subtotal(rows);
 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
