@@ -7,6 +7,7 @@ import user from "../Images/User.svg";
 import Login from "./Login";
 import Cart from "./Cart";
 import Logo from "../Images/Logo.png";
+import { Link } from "react-router-dom";
 
 const Nav = styled.div`
   display: flex;
@@ -58,7 +59,9 @@ const Navbar = () => {
   return (
     <Nav>
       <div>
-        <SVG src={Logo} />
+        <Link to="/">
+          <SVG src={Logo} />
+        </Link>
       </div>
       <div
         style={{

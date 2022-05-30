@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Logo from "../Images/Logo.png";
+import { Link } from "react-router-dom";
+import useLogin from "../Services/Login";
 
 const SVG = styled.img`
   height: 15vh;
@@ -35,6 +37,7 @@ const Button = styled.button`
 `;
 
 const Login = ({ open, handleClose }) => {
+  const { useEmail, usePassword, handleSubmit } = useLogin();
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>
@@ -52,7 +55,13 @@ const Login = ({ open, handleClose }) => {
               <SVG src={Logo} />
             </div>
             <div>
-              <Button>Sign Up</Button>
+              <Link
+                to="/signup"
+                style={{ textDecoration: "none" }}
+                onClick={handleClose}
+              >
+                <Button>Sign Up</Button>
+              </Link>
             </div>
           </div>
           <div
@@ -64,18 +73,30 @@ const Login = ({ open, handleClose }) => {
             <form>
               <h1>Have an Account?</h1>
               <div class="mb-3">
-                <label for="email" class="form-label">
+                <label htmlFor="email" class="form-label">
                   Email address
                 </label>
-                <input type="email" class="form-control" id="email" />
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  value={useEmail[0]}
+                  onChange={(e) => useEmail[1](e.target.value)}
+                />
               </div>
               <div class="mb-3">
-                <label for="password" class="form-label">
+                <label htmlFor="password" class="form-label">
                   Password
                 </label>
-                <input type="password" class="form-control" id="password" />
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  value={usePassword[0]}
+                  onChange={(e) => usePassword[1](e.target.value)}
+                />
               </div>
-              <button type="submit" class="btn btn-primary">
+              <button class="btn btn-primary" onClick={handleSubmit}>
                 Sign In
               </button>
             </form>
