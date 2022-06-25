@@ -9,7 +9,8 @@ const Main = () => {
   const [display, setDisplay] = useState(0);
   return (
     <div>
-      <Options />
+      {/* <Options /> */}
+      <h1>Best Seller</h1>
       {display === 0 ? <CardRow /> : ""}
       {display === 1 ? <CardRow /> : ""}
       {display === 2 ? <CardRow /> : ""}
