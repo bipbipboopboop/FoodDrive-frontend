@@ -11,6 +11,7 @@ import MenuOfTheDay from "./Pages/Vendor/MenuOfTheDay";
 import VendorPage from "./Pages/Vendor/VendorPage";
 import Promotion from "./Pages/Vendor/Promotion";
 import BestSeller from "./Pages/Vendor/BestSeller";
+import CreateShop from "./Pages/Vendor/CreateShop";
 
 function App() {
   return (
@@ -19,12 +20,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="signup" element={<SignupForm />} />
+
         <Route path="vendor_sign_up" element={<VendorSignupForm />} />
         <Route path="vendor/:vendorID" element={<VendorPage />}>
           <Route path="menu_of_the_day" element={<MenuOfTheDay />} />
           <Route path="promotion" element={<Promotion />} />
           <Route path="best_seller" element={<BestSeller />} />
         </Route>
+        <Route path="create_shop" element={<CreateShop />} />
       </Routes>
     </div>
   );
