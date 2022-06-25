@@ -37,7 +37,7 @@ const Button = styled.button`
 `;
 
 const Login = ({ open, handleClose }) => {
-  const { useEmail, usePassword, handleSubmit } = useLogin();
+  const { useEmail, usePassword, handleSubmit } = useLogin(handleClose);
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>

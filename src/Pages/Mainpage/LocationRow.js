@@ -6,10 +6,14 @@ const Row = styled.div`
   display: flex;
   justify-content: space-around;
   background: black;
+  flex-wrap: wrap;
 `;
 const LocationRow = () => {
   return (
     <Row>
+      <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
+      <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
+      <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
       <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
       <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
       <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
