@@ -1,18 +1,19 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import cart from "../Images/Cart.svg";
 import user from "../Images/User.svg";
 import store from "../Images/Store.svg";
 
-import Login from "../Pages/Login/Login";
-import Cart from "./Cart";
+// import Login from "../Pages/Login/Login";
+
 import Logo from "../Images/Logo.png";
 import Logout from "../Images/Logout.svg";
 
-import { Link, useNavigate } from "react-router-dom";
-
-import useModal from "./Hooks/useModal";
+import useModal from "../Hooks/useModal";
 import { Nav, CircleButton, SVG } from "./Styles/styles";
+import Signin from "./Forms/signin.form";
+import CartModal from "./Modals/Cart.modal";
 
 const Navbar = () => {
   // const isLoggedIn = localStorage.getItem("user") !== null;
@@ -61,9 +62,9 @@ const Navbar = () => {
           ""
         )}
 
-        <Login open={open} handleClose={handleClose} />
+        <Signin open={open} handleClose={handleClose} />
         {isLoggedIn && (
-          <Cart open={secondaryOpen} handleClose={handleCloseSecondary} />
+          <CartModal open={secondaryOpen} handleClose={handleCloseSecondary} />
         )}
       </div>
     </Nav>

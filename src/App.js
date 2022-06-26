@@ -12,6 +12,7 @@ import VendorPage from "./Pages/Vendor/VendorPage";
 import Promotion from "./Pages/Vendor/Promotion";
 import BestSeller from "./Pages/Vendor/BestSeller";
 import CreateShop from "./Pages/Vendor/CreateShop";
+import Cart from "./Components/Cart/Cart";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="best_seller" element={<BestSeller />} />
         </Route>
         <Route path="create_shop" element={<CreateShop />} />
+        <Route path="test" element={<Cart />} />
       </Routes>
     </div>
   );
