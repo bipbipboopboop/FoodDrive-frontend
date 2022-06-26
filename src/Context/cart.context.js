@@ -5,9 +5,25 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   // cart contains many products
   const defaultCart = [
-    { productName: "Spaghetti", quantity: 1, price: 5.0 },
-    { productName: "Ice Lemon Tea", quantity: 1, price: 1.0 },
-    { productName: "Pinky Pasty", quantity: 1, price: 7.5 },
+    {
+      id: 1,
+      reviews: [
+        {
+          product: 1,
+          shop: null,
+          customer: 1,
+          description: "This Spaghetti is creamy",
+          date: "2022-06-23",
+        },
+      ],
+      title: "Spaghetti",
+      description: "Carbonara, may contain milk",
+      unit_price: 5.0,
+      stock: 999,
+      shop: 1,
+      image: "",
+      quantity: 1,
+    },
   ];
   const [cart, setCart] = useState(defaultCart);
   return (

@@ -12,11 +12,12 @@ const Cart = () => {
 
   return (
     <div>
-      {/* <pre>{JSON.stringify(cart)}</pre> */}
+      {console.log({ cart })}
       <div>
-        {cart.map((cartItem, index) => (
-          <CartItem key={index} cartItem={cartItem} />
-        ))}
+        {cart &&
+          cart.map((cartInfo, index) => (
+            <CartItem key={index} cartItem={cartInfo} />
+          ))}
       </div>
       <div
         style={{

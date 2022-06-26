@@ -2,7 +2,25 @@ export const handleOrderSubmit = ({ cartInfo, event }) => {
   console.log({ cartInfo });
 };
 
-export const addToCart = () => {};
+export const addToCart = ({ setCart, cart, itemToAdd, quantity }) => {
+  console.log({ cart, itemToAdd, quantity });
+  const existingCartItem = cart.find(
+    (cartItem) => cartItem.id === itemToAdd.id
+  );
+  var updatedCart = cart;
+  if (existingCartItem) {
+    updatedCart.map((cartItem) => {
+      console.log({ cartItemID: cartItem.id, itemID: itemToAdd.id });
+      return cartItem.id === itemToAdd.id
+        ? { ...cartItem, quantity }
+        : cartItem;
+    });
+  } else {
+    updatedCart = [...cart, { ...itemToAdd, quantity: 1 }];
+  }
+  console.log({ updatedCart });
+  setCart(updatedCart);
+};
 
 export const handleSignIn = () => {};
 export const handleSignOut = () => {};
@@ -85,7 +103,7 @@ export const getMenu = (setMenu, vendor_slug) => {
       image: "",
     },
     {
-      id: 2,
+      id: 3,
       reviews: [],
       title: "Ice Lemon Tea",
       description: "Fresh made lemonade",

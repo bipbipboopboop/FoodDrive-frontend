@@ -34,7 +34,8 @@ const CardImg = styled.img`
 
 const OrderModal = ({ menuItem, open, handleClose }) => {
   const [quantity, setQuantity] = useState(1);
-  const { setCart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
+
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>
@@ -69,6 +70,8 @@ const OrderModal = ({ menuItem, open, handleClose }) => {
             </div>
           </div>
           <p>${menuItem.unit_price * quantity}</p>
+          <pre>{JSON.stringify(menuItem)}</pre>
+          <pre>{quantity}</pre>
 
           <div
             style={{
@@ -77,7 +80,11 @@ const OrderModal = ({ menuItem, open, handleClose }) => {
               justifyContent: "center",
             }}
           >
-            <RedButton onClick={addToCart(setCart, quantity)}>
+            <RedButton
+              onClick={() =>
+                addToCart({ setCart, cart, itemToAdd: menuItem, quantity })
+              }
+            >
               Add To Cart
             </RedButton>
           </div>

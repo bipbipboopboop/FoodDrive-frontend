@@ -13,7 +13,7 @@ const MenuRow = ({ menu }) => {
       }}
     >
       {menu.map((menuItem) => (
-        <MenuCard key={menuItem.id} menuItem={menuItem} />
+        <MenuCard key={menuItem.title} menuItem={menuItem} />
       ))}
     </div>
   );

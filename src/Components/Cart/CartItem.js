@@ -2,14 +2,35 @@ import React from "react";
 import { SVG } from "../Styles/styles";
 
 const CartItem = ({ cartItem }) => {
-  const { image, productName, quantity } = cartItem;
+  /*
+  {
+    id: 1,
+    reviews: [
+      {
+        product: 1,
+        shop: null,
+        customer: 1,
+        description: "This Spaghetti is creamy",
+        date: "2022-06-23",
+      },
+    ],
+    title: "Spaghetti",
+    description: "Carbonara, may contain milk",
+    unit_price: 5.0,
+    stock: 999,
+    shop: 1,
+    image: "",
+  }
+  */
+  console.log({ cartItem });
   return (
-    <div style={{ display: "flex", border: "1px solid" }}>
-      <SVG src={image} />
-      <span>
-        {productName} {quantity}
-      </span>
-    </div>
+    cartItem && (
+      <div style={{ display: "flex", border: "1px solid" }}>
+        <span>
+          {cartItem.title} {cartItem.quantity}
+        </span>
+      </div>
+    )
   );
 };
 
