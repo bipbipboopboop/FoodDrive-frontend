@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMenu } from "../../Services/services";
-import MenuRow from "../Mainpage/MenuRow";
+import MenuRow from "../../Components/Cards/MenuRow";
 import Options from "../Mainpage/MainpageNav";
 
 const VendorPage = () => {

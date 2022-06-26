@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import styled from "styled-components";
 
-import OrderModal from "./OrderModal";
+// import OrderModal from "./OrderModal";
+import OrderModal from "../Modals/Cart.modal";
 
 const Card = styled.div`
   width: 300px;

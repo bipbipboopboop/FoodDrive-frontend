@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../Components/Footer";
 import { getMainpageMenu } from "../../Services/services";
 
-import LocationRow from "./LocationRow";
-
-import MenuRow from "./MenuRow";
+import MenuRow from "../../Components/Cards/MenuRow";
+import LocationRow from "../../Components/Cards/LocationRow";
 
 const Main = () => {
   const [menu, setMenu] = useState();

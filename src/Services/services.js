@@ -2,6 +2,8 @@ export const handleOrderSubmit = ({ cartInfo, event }) => {
   console.log({ cartInfo });
 };
 
+export const addToCart = () => {};
+
 export const handleSignIn = () => {};
 export const handleSignOut = () => {};
 
@@ -52,6 +54,7 @@ export const getMainpageMenu = (setMenu) => {
 
 export const getMenu = (setMenu, vendor_slug) => {
   // call api + vendor_slug and setMenu
+  const url = vendor_slug;
   const defaultMenu = [
     {
       id: 1,
@@ -92,7 +95,5 @@ export const getMenu = (setMenu, vendor_slug) => {
       image: "",
     },
   ];
-  setMenu(defaultMenu);
+  setMenu(vendor_slug === "frontier" ? defaultMenu : []);
 };
-
-export const addToCart = () => {};
