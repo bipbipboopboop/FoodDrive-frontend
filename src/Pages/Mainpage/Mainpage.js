@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../Components/Footer";
+import { getMainpageMenu } from "../../Services/services";
 
-import CardRow from "./CardRow";
 import LocationRow from "./LocationRow";
-import Options from "./MainpageNav";
+
+import MenuRow from "./MenuRow";
 
 const Main = () => {
-  const [display, setDisplay] = useState(0);
+  const [menu, setMenu] = useState();
+  useEffect(() => {
+    getMainpageMenu(setMenu);
+  }, []);
+
   return (
     <div>
-      {/* <Options /> */}
       <h1>Best Seller</h1>
-      {display === 0 ? <CardRow /> : ""}
-      {display === 1 ? <CardRow /> : ""}
-      {display === 2 ? <CardRow /> : ""}
-      {display === 3 ? <CardRow /> : ""}
+      {menu && <MenuRow menu={menu} />}
       <LocationRow />
       <Footer />
     </div>

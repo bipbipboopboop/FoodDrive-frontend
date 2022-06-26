@@ -5,14 +5,11 @@ import SignupForm from "./Components/Forms/customer.signup.form";
 import VendorSignupForm from "./Components/Forms/vendor.signup.form";
 
 import Navbar from "./Components/Navbar";
+import Cart from "./Components/Cart/Cart";
 
 import Main from "./Pages/Mainpage/Mainpage";
-import MenuOfTheDay from "./Pages/Vendor/MenuOfTheDay";
+
 import VendorPage from "./Pages/Vendor/VendorPage";
-import Promotion from "./Pages/Vendor/Promotion";
-import BestSeller from "./Pages/Vendor/BestSeller";
-import CreateShop from "./Pages/Vendor/CreateShop";
-import Cart from "./Components/Cart/Cart";
 
 function App() {
   return (
@@ -20,16 +17,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="signup" element={<SignupForm />} />
 
+        <Route path="signup" element={<SignupForm />} />
         <Route path="vendor_sign_up" element={<VendorSignupForm />} />
-        <Route path="vendor/:vendorID" element={<VendorPage />}>
-          <Route path="menu_of_the_day" element={<MenuOfTheDay />} />
-          <Route path="promotion" element={<Promotion />} />
-          <Route path="best_seller" element={<BestSeller />} />
-        </Route>
-        <Route path="create_shop" element={<CreateShop />} />
-        <Route path="test" element={<Cart />} />
+
+        <Route path="vendor/:vendor_slug" element={<VendorPage />} />
       </Routes>
     </div>
   );

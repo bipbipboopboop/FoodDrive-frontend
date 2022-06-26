@@ -1,24 +1,29 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect } from "react";
+import { useState } from "react";
+
+import { RowWrap } from "../../Components/Styles/styles";
+import { getReccLocation } from "../../Services/services";
+
 import LocationCard from "./LocationCard";
 
-const Row = styled.div`
-  display: flex;
-  justify-content: space-around;
-  background: black;
-  flex-wrap: wrap;
-`;
 const LocationRow = () => {
+  const [locationList, setLocationList] = useState();
+  useEffect(() => {
+    getReccLocation(setLocationList);
+  }, []);
+
   return (
-    <Row>
-      <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
-      <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
-      <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
-      <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
-      <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
-      <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
-      <LocationCard image="https://uci.nus.edu.sg/oca/wp-content/uploads/sites/9/2018/05/deck.jpg" />
-    </Row>
+    <RowWrap>
+      {locationList &&
+        locationList.map((loc, index) => (
+          <LocationCard
+            key={index}
+            name={loc.name}
+            image={loc.image}
+            vendorSlug={loc.vendor_slug}
+          />
+        ))}
+    </RowWrap>
   );
 };
 

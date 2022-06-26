@@ -48,19 +48,26 @@ const Button = styled.button`
   border: 0px;
 `;
 
-const OrderModal = ({ name, description, price, image, open, handleClose }) => {
+const OrderModal = ({
+  title,
+  description,
+  price,
+  image,
+  open,
+  handleClose,
+}) => {
   const [quantity, setQuantity] = useState(1);
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>
         <Card>
           <CardImg src={image} />
-          <h3>{name}</h3>
+          <h3>{title}</h3>
           <p>{description}</p>
           <div style={{ display: "flex", justifyContent: "" }}>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <button
-                className="btn btn-primary"
+                classtitle="btn btn-primary"
                 onClick={() => setQuantity(quantity + 1)}
               >
                 +
@@ -72,7 +79,7 @@ const OrderModal = ({ name, description, price, image, open, handleClose }) => {
                 onChange={(event) => setQuantity(event.target.value)}
               />
               <button
-                className="btn btn-primary"
+                classtitle="btn btn-primary"
                 onClick={() => {
                   if (quantity > 1) {
                     setQuantity(quantity - 1);

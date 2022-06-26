@@ -1,16 +1,22 @@
-import React from "react";
-import { Outlet, useParams } from "react-router-dom";
-import CardRow from "../Mainpage/CardRow";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getMenu } from "../../Services/services";
+import MenuRow from "../Mainpage/MenuRow";
 import Options from "../Mainpage/MainpageNav";
 
 const VendorPage = () => {
   const params = useParams();
+  const [menu, setMenu] = useState();
+  useEffect(() => {
+    getMenu(setMenu, params.vendor_slug);
+  }, []);
+
   return (
     <>
-      <Options />
-      {/* <CardRow /> */}
-      <Outlet />
-      <pre>{params.vendorID}</pre>
+      {/* <Options /> */}
+      {/* <Outlet /> */}
+      {/* <pre>{params.vendor_slug}</pre> */}
+      {menu && <MenuRow menu={menu} />}
     </>
   );
 };

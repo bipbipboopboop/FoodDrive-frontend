@@ -42,7 +42,7 @@ const Button = styled.button`
   text-align: center;
   border: 0px;
 `;
-export default function MenuCard({ name, description, price, image }) {
+export default function MenuCard({ title, description, price, image }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -54,7 +54,7 @@ export default function MenuCard({ name, description, price, image }) {
     <Card>
       <CardImg src={image} />
       <CardContent>
-        <h3>{name}</h3>
+        <h3>{title}</h3>
         <p>{description}</p>
         <p>${price}</p>
       </CardContent>
@@ -62,7 +62,7 @@ export default function MenuCard({ name, description, price, image }) {
         <Button onClick={handleOpen}>Select</Button>
       </CardActions>
       <OrderModal
-        name={name}
+        title={title}
         description={description}
         price={price}
         image={image}
