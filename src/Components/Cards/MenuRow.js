@@ -12,14 +12,8 @@ const MenuRow = ({ menu }) => {
         margin: "0px",
       }}
     >
-      {menu.map((item) => (
-        <MenuCard
-          key={item.title}
-          title={item.title}
-          description={item.description}
-          price={item.unit_price}
-          image={item.image}
-        />
+      {menu.map((menuItem) => (
+        <MenuCard key={menuItem.id} menuItem={menuItem} />
       ))}
     </div>
   );

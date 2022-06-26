@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import styled from "styled-components";
 
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-
-const SVG = styled.img`
-  height: 15vh;
-`;
+import { RedButton } from "../Styles/styles";
+import { CartContext } from "../../Context/cart.context";
+import { addToCart } from "../../Services/services";
 
 const style = {
   position: "absolute",
@@ -33,41 +32,20 @@ const CardImg = styled.img`
   height: 50%;
 `;
 
-const Button = styled.button`
-  display: inline-block;
-  background-color: #d30000;
-  text-transform: uppercase;
-  color: white;
-  border-radius: 30px;
-  padding-top: 16px;
-  padding-right: 24px;
-  padding-bottom: 16px;
-  padding-left: 24px;
-  font-size: 16px;
-  text-align: center;
-  border: 0px;
-`;
-
-const OrderModal = ({
-  title,
-  description,
-  price,
-  image,
-  open,
-  handleClose,
-}) => {
+const OrderModal = ({ menuItem, open, handleClose }) => {
   const [quantity, setQuantity] = useState(1);
+  const { setCart } = useContext(CartContext);
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>
         <Card>
-          <CardImg src={image} />
-          <h3>{title}</h3>
-          <p>{description}</p>
-          <div style={{ display: "flex", justifyContent: "" }}>
+          <CardImg src={menuItem.image} />
+          <h3>{menuItem.title}</h3>
+          <p>{menuItem.description}</p>
+          <div style={{ display: "flex" }}>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <button
-                classtitle="btn btn-primary"
+                className="btn btn-primary"
                 onClick={() => setQuantity(quantity + 1)}
               >
                 +
@@ -79,7 +57,7 @@ const OrderModal = ({
                 onChange={(event) => setQuantity(event.target.value)}
               />
               <button
-                classtitle="btn btn-primary"
+                className="btn btn-primary"
                 onClick={() => {
                   if (quantity > 1) {
                     setQuantity(quantity - 1);
@@ -90,7 +68,7 @@ const OrderModal = ({
               </button>
             </div>
           </div>
-          <p>${price * quantity}</p>
+          <p>${menuItem.unit_price * quantity}</p>
 
           <div
             style={{
@@ -99,7 +77,9 @@ const OrderModal = ({
               justifyContent: "center",
             }}
           >
-            <Button>Add To Cart</Button>
+            <RedButton onClick={addToCart(setCart, quantity)}>
+              Add To Cart
+            </RedButton>
           </div>
         </Card>
       </Box>
