@@ -1,4 +1,3 @@
-import { signUpAPI } from "./apiURL";
 import axios from "../Services/api";
 
 export const handleOrderSubmit = ({ cartInfo, event }) => {
@@ -25,19 +24,44 @@ export const addToCart = ({ setCart, cart, itemToAdd, quantity }) => {
   setCart(updatedCart);
 };
 
+// Auth
+// ______________________________________________________________________
+export const setAuth = async (responseData) => {
+  localStorage.setItem(
+    "auth",
+    JSON.stringify({
+      access: responseData.access,
+      refresh: responseData.refresh,
+    })
+  );
+};
+
+export const getAuth = () => {
+  return JSON.parse(localStorage.getItem("auth"));
+};
+
+export const getUserInfo = async (access) => {
+  const url = "";
+  const response = await axios.get(url);
+};
+
 export const handleSignIn = async ({ userInfo }) => {
   const url = "/auth/jwt/create";
-  console.log({ userInfo });
+
   try {
     const responseData = await axios.post(url, JSON.stringify(userInfo));
-    return responseData;
+    return responseData.data;
   } catch (error) {
     console.log({ error });
     return 404;
   }
 };
-export const handleSignOut = () => {};
+export const handleSignOut = (setIsLoggedIn) => {
+  localStorage.clear();
+  setIsLoggedIn(false);
+};
 
+// ______________________________________________________________________
 export const getReccLocation = (setLocationList) => {
   const defaultLocation = [
     {
