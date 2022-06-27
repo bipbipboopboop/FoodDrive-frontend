@@ -7,18 +7,24 @@ import {
   CardImg,
   RedButton,
 } from "../../Components/Styles/styles";
+import { handleVisit } from "../../Services/services";
 
-export default function LocationCard({ name, description, image, vendorSlug }) {
+export default function LocationCard({ locationInfo }) {
   const navigate = useNavigate();
   return (
     <AbstractCard>
-      <CardImg src={image} />
+      <CardImg src={locationInfo.image_link} />
       <div>
-        <h3>{name}</h3>
-        <p>{description}</p>
+        <h3>{locationInfo.name}</h3>
+        <p>{locationInfo.description}</p>
+        <pre>{JSON.stringify(locationInfo.id)}</pre>
       </div>
       <CardActions>
-        <RedButton onClick={() => navigate(`vendor/${vendorSlug}`)}>
+        <RedButton
+          onClick={() => {
+            navigate(`vendor/${locationInfo.id}`);
+          }}
+        >
           Visit
         </RedButton>
       </CardActions>

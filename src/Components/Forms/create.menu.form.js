@@ -34,7 +34,7 @@ const CreateMenu = () => (
                         <label htmlFor={`menu.${index}.name`}>Menu Name</label>
                         <Field
                           name={`menu.${index}.name`}
-                          placeholder="Jane Doe"
+                          placeholder="Enter name of menu"
                           type="text"
                         />
                       </div>

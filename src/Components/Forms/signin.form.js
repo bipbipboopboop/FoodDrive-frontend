@@ -11,7 +11,8 @@ import {
 } from "../../Components/Styles/styles";
 import Logo from "../../Images/Logo.png";
 import { Link, useNavigate } from "react-router-dom";
-import { handleSignIn, setAuth } from "../../Services/services";
+
+import { handleSignIn, setAuth } from "../../Services/auth.services";
 import { UserContext } from "../../Context/user.context";
 
 const Signin = ({ open, handleClose }) => {
@@ -78,7 +79,7 @@ const Signin = ({ open, handleClose }) => {
                     <label htmlFor="password">Password : </label>
                     <Field type="password" name="password" />
                   </div>
-                  <pre>{JSON.stringify(values)}</pre>
+
                   <RedButton type="submit">Sign In</RedButton>
                 </Form>
               </div>

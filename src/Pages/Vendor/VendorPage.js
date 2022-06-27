@@ -8,7 +8,7 @@ const VendorPage = () => {
   const params = useParams();
   const [menu, setMenu] = useState();
   useEffect(() => {
-    getMenu(setMenu, params.vendor_slug);
+    getMenu(setMenu, params.shopID);
   }, []);
 
   return (

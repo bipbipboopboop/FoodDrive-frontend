@@ -15,32 +15,11 @@ import {
 const CardContent = styled.div``;
 
 export default function MenuCard({ menuItem }) {
-  /*
-  menuItem : 
-  {
-      id: 1,
-      reviews: [
-        {
-          product: 1,
-          shop: null,
-          customer: 1,
-          description: "This Spaghetti is creamy",
-          date: "2022-06-23",
-        },
-      ],
-      title: "Spaghetti",
-      description: "Carbonara, may contain milk",
-      unit_price: 5.0,
-      stock: 999,
-      shop: 1,
-      image: "",
-  }
-  */
   const { open, handleOpen, handleClose } = useModal();
 
   return (
     <AbstractCard>
-      <CardImg src={menuItem.image} />
+      <CardImg src={menuItem.image_link} />
       <CardContent>
         <h3>{menuItem.title}</h3>
         <p>{menuItem.description}</p>

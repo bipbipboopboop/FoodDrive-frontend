@@ -20,7 +20,7 @@ function App() {
         <Route path="signup" element={<SignupForm />} />
         <Route path="vendor_sign_up" element={<VendorSignupForm />} />
 
-        <Route path="vendor/:vendor_slug" element={<VendorPage />} />
+        <Route path="vendor/:shopID" element={<VendorPage />} />
         <Route path="create_menu" element={<CreateMenu />} />
       </Routes>
     </div>

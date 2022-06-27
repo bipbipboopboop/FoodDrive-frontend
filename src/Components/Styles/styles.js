@@ -72,6 +72,8 @@ export const AbstractCard = styled.div`
 
 export const CardImg = styled.img`
   height: 50%;
+  max-height: 20vh;
+  max-width: 30vh;
 `;
 
 export const CardContent = styled.div``;

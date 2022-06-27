@@ -14,7 +14,7 @@ import Signin from "./Forms/signin.form";
 import CartModal from "./Modals/Cart.modal";
 import { useContext } from "react";
 import { UserContext } from "../Context/user.context";
-import { handleSignOut } from "../Services/services";
+import { handleSignOut } from "../Services/auth.services";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const Navbar = () => {
           width: "300px",
         }}
       >
-        <CircleButton src={profile} onClick={handleOpen} />
+        {!isLoggedIn ? <CircleButton src={profile} onClick={handleOpen} /> : ""}
         {isLoggedIn ? (
           <>
             <CircleButton src={cart} onClick={handleOpenSecondary} />
