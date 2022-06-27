@@ -18,6 +18,10 @@ export const getAuth = () => {
   return JSON.parse(localStorage.getItem("auth"));
 };
 
+export const getAccessToken = () => {
+  return getAuth()?.access;
+};
+
 export const getUserInfo = async () => {
   const url = "/auth/users/me";
   console.log({ 6: localStorage.getItem("user") });
