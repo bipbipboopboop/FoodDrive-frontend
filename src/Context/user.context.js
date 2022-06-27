@@ -14,6 +14,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     if (user) {
       setIsLoggedIn(true);
+      setIsVendor(true);
     }
   }, [user]);
 

@@ -25,10 +25,14 @@ const CartItem = ({ cartItem }) => {
   console.log({ cartItem });
   return (
     cartItem && (
-      <div style={{ display: "flex", border: "1px solid" }}>
-        <span>
-          {cartItem.title} {cartItem.quantity}
-        </span>
+      <div
+        style={{ display: "flex", border: "1px solid", alignItems: "center" }}
+      >
+        <div>
+          <SVG src={cartItem.image_link} />
+        </div>
+        <div>{cartItem.title}</div>
+        <div>{cartItem.quantity}</div>
       </div>
     )
   );

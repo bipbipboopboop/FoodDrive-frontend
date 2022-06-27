@@ -1,4 +1,5 @@
 import api from "../Services/api";
+import { getUserInfo } from "./auth.services";
 
 export const handleOrderSubmit = ({ cartInfo, event }) => {
   console.log({ cartInfo });
@@ -6,13 +7,14 @@ export const handleOrderSubmit = ({ cartInfo, event }) => {
 
 export const addToCart = ({ setCart, cart, itemToAdd, quantity }) => {
   console.log({ cart, itemToAdd, quantity });
+
   const existingCartItem = cart.find(
     (cartItem) => cartItem.id === itemToAdd.id
   );
+
   var updatedCart = cart;
   if (existingCartItem) {
     updatedCart.map((cartItem) => {
-      console.log({ cartItemID: cartItem.id, itemID: itemToAdd.id });
       return cartItem.id === itemToAdd.id
         ? { ...cartItem, quantity }
         : cartItem;
@@ -20,7 +22,6 @@ export const addToCart = ({ setCart, cart, itemToAdd, quantity }) => {
   } else {
     updatedCart = [...cart, { ...itemToAdd, quantity: 1 }];
   }
-  console.log({ updatedCart });
   setCart(updatedCart);
 };
 
@@ -40,25 +41,8 @@ export const getMainpageMenu = async (setMenu) => {
 
 export const getMenu = async (setMenu, shopID) => {
   const url = `store/shops/${shopID}/products`;
-
   const response = await api.get(url);
-
   setMenu(response.data);
-};
-
-const createVendor = async ({ vendorInfo }) => {
-  const response = await api.post();
-  return response;
-};
-const createShop = async ({ shopInfo }) => {
-  const response = await api.post();
-  return response;
-};
-const handleSubmit = ({ userInfo, shopInfo }) => {
-  const userResponse = createVendor(userInfo);
-  if (userResponse === 200) {
-    const shopResponse = createShop(shopInfo);
-  }
 };
 
 export const handleVisit = async ({ shopID }) => {
@@ -69,4 +53,13 @@ export const handleVisit = async ({ shopID }) => {
   } catch (error) {
     console.log({ error });
   }
+};
+
+export const getShop = async () => {
+  const url = "store/owners/me/";
+  const getOwnerResponse = await api.get(url);
+  const ownerInfo = getOwnerResponse.data;
+  const storeInfo = ownerInfo.shop;
+  console.log(storeInfo);
+  return storeInfo;
 };
