@@ -27,14 +27,14 @@ export const addToCart = ({ setCart, cart, itemToAdd, quantity }) => {
 export const getReccLocation = async (setLocationList) => {
   const url = "store/shops/";
   const response = await api.get(url);
-  console.log({ locations: response.data });
+
   setLocationList(response.data);
 };
 
 export const getMainpageMenu = async (setMenu) => {
   const url = "store/products/";
   const response = await api.get(url);
-  console.log({ menu: response.data });
+
   setMenu(response.data);
 };
 

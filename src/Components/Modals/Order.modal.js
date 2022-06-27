@@ -40,7 +40,7 @@ const OrderModal = ({ menuItem, open, handleClose }) => {
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>
         <Card>
-          <CardImg src={menuItem.image} />
+          <CardImg src={menuItem.image_link} />
           <h3>{menuItem.title}</h3>
           <p>{menuItem.description}</p>
           <div style={{ display: "flex" }}>
@@ -70,8 +70,6 @@ const OrderModal = ({ menuItem, open, handleClose }) => {
             </div>
           </div>
           <p>${menuItem.unit_price * quantity}</p>
-          <pre>{JSON.stringify(menuItem)}</pre>
-          <pre>{quantity}</pre>
 
           <div
             style={{

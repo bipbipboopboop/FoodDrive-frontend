@@ -19,6 +19,7 @@ const VendorSignupForm = () => {
           name: "",
           description: "",
           address: "",
+          is_vendor: true,
         }}
         onSubmit={(values) => {
           const vendorInfo = {
@@ -27,6 +28,7 @@ const VendorSignupForm = () => {
             re_password: values.confirm_password,
             first_name: values.first_name,
             last_name: values.last_name,
+            is_vendor: true,
           };
           const shopInfo = {
             name: values.name,

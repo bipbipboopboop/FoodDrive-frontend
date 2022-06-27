@@ -12,7 +12,11 @@ import {
 import Logo from "../../Images/Logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
-import { handleSignIn, setAuth } from "../../Services/auth.services";
+import {
+  getUserInfo,
+  handleSignIn,
+  setAuth,
+} from "../../Services/auth.services";
 import { UserContext } from "../../Context/user.context";
 
 const Signin = ({ open, handleClose }) => {
@@ -47,15 +51,13 @@ const Signin = ({ open, handleClose }) => {
           <Formik
             initialValues={{ email: "", password: "" }}
             onSubmit={async (values) => {
-              const response = await handleSignIn({ userInfo: values });
-
+              const response = await handleSignIn({ loginInfo: values });
               if (response === 404) {
                 alert("Wrong email or password");
               } else {
                 setIsLoggedIn(true);
-                setAuth(response);
-                // const userInfo = await getUserInfo(access);
-                // setUser();
+                const userInfo = await getUserInfo();
+                console.log({ userInfo });
                 navigate("/");
                 handleClose();
               }

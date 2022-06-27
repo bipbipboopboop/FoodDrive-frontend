@@ -7,7 +7,6 @@ import {
   CardImg,
   RedButton,
 } from "../../Components/Styles/styles";
-import { handleVisit } from "../../Services/services";
 
 export default function LocationCard({ locationInfo }) {
   const navigate = useNavigate();

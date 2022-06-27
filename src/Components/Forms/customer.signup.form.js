@@ -18,6 +18,7 @@ const SignupForm = () => {
           re_password: "",
           first_name: "",
           last_name: "",
+          is_vendor: false,
         }}
         onSubmit={(values) => {
           if (values.password === values.re_password) {

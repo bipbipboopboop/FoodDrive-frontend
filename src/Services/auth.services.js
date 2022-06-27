@@ -2,7 +2,8 @@ import api from "../Services/api";
 
 // Auth
 // ______________________________________________________________________
-export const setAuth = async (responseData) => {
+export const setAuth = (responseData) => {
+  console.log({ 3: localStorage.getItem("auth") });
   localStorage.setItem(
     "auth",
     JSON.stringify({
@@ -10,23 +11,36 @@ export const setAuth = async (responseData) => {
       refresh: responseData.refresh,
     })
   );
+  console.log({ 4: localStorage.getItem("auth") });
 };
 
 export const getAuth = () => {
   return JSON.parse(localStorage.getItem("auth"));
 };
 
-export const getUserInfo = async (access) => {
-  const url = "";
+export const getUserInfo = async () => {
+  const url = "/auth/users/me";
+  console.log({ 6: localStorage.getItem("user") });
   const response = await api.get(url);
+  console.log({ 7: response });
+  const userData = response.data;
+  console.log({ 8: userData });
+  localStorage.setItem("user", JSON.stringify(userData));
 };
 
-export const handleSignIn = async ({ userInfo }) => {
+export const handleSignIn = async ({ loginInfo }) => {
   const url = "/auth/jwt/create";
 
   try {
-    const responseData = await api.post(url, JSON.stringify(userInfo));
-    return responseData.data;
+    const response = await api.post(url, JSON.stringify(loginInfo));
+    console.log({ 1: response });
+    const tokens = response.data;
+    console.log({ 2: tokens });
+    setAuth(tokens);
+    console.log({ 5: "here" });
+    await getUserInfo(tokens.access);
+    console.log({ 9: localStorage.getItem("user") });
+    return tokens;
   } catch (error) {
     console.log({ error });
     return 404;
