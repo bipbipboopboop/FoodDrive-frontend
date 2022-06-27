@@ -83,7 +83,6 @@ const VendorSignupForm = () => {
                   <label htmlFor="text">Shop Address</label>
                   <Field type="text" name="address" />
                 </div>
-                {/* <pre>{JSON.stringify(values)}</pre> */}
 
                 <RedButton type="submit">Create Account</RedButton>
               </Form>

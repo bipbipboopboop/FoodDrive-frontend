@@ -16,7 +16,6 @@ export default function LocationCard({ locationInfo }) {
       <div>
         <h3>{locationInfo.name}</h3>
         <p>{locationInfo.description}</p>
-        <pre>{JSON.stringify(locationInfo.id)}</pre>
       </div>
       <CardActions>
         <RedButton

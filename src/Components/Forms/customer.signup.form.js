@@ -66,7 +66,7 @@ const SignupForm = () => {
               <label htmlFor="re_password">Confirm Password : </label>
               <Field type="password" name="re_password" />
             </div>
-            <pre>{JSON.stringify(values)}</pre>
+
             <RedButton type="submit">Submit</RedButton>
           </Form>
         )}

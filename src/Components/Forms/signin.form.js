@@ -12,11 +12,7 @@ import {
 import Logo from "../../Images/Logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
-import {
-  getUserInfo,
-  handleSignIn,
-  setAuth,
-} from "../../Services/auth.services";
+import { getUserInfo, handleSignIn } from "../../Services/auth.services";
 import { UserContext } from "../../Context/user.context";
 
 const Signin = ({ open, handleClose }) => {
@@ -57,7 +53,7 @@ const Signin = ({ open, handleClose }) => {
               } else {
                 setIsLoggedIn(true);
                 const userInfo = await getUserInfo();
-                console.log({ userInfo });
+                setUser(userInfo);
                 navigate("/");
                 handleClose();
               }
