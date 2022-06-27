@@ -10,15 +10,17 @@ import {
 } from "../../Components/Styles/styles";
 import Logo from "../../Images/Logo.png";
 import { Link } from "react-router-dom";
+import { handleSignIn } from "../../Services/services";
 
 const Signin = ({ open, handleClose }) => (
   <Formik
     initialValues={{ email: "", password: "" }}
-    onSubmit={(data) => {
+    onSubmit={({ data }) => {
       console.log(data);
+      //const response = handleSignIn({ userInfo: data });
     }}
   >
-    {({ values, handleChange, handleSubmit }) => (
+    {({ values, handleChange }) => (
       <Modal open={open} onClose={handleClose}>
         <Box sx={modalStyle}>
           <div style={{ display: "flex" }}>
@@ -53,31 +55,31 @@ const Signin = ({ open, handleClose }) => (
             >
               <form>
                 <h1>Have an Account?</h1>
-                <div class="mb-3">
-                  <label htmlFor="email" class="form-label">
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">
                     Email address
                   </label>
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="email"
                     value={values.email}
                     onChange={handleChange}
                   />
                 </div>
-                <div class="mb-3">
-                  <label htmlFor="password" class="form-label">
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">
                     Password
                   </label>
                   <input
                     type="password"
-                    class="form-control"
+                    className="form-control"
                     id="password"
                     value={values.password}
                     onChange={handleChange}
                   />
                 </div>
-                <SecondaryButton class="btn btn-primary" onClick={handleSubmit}>
+                <SecondaryButton className="btn btn-primary" type="submit">
                   Sign In
                 </SecondaryButton>
               </form>

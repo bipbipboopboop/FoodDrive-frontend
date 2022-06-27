@@ -5,11 +5,10 @@ import SignupForm from "./Components/Forms/customer.signup.form";
 import VendorSignupForm from "./Components/Forms/vendor.signup.form";
 
 import Navbar from "./Components/Navbar";
-import Cart from "./Components/Cart/Cart";
 
 import Main from "./Pages/Mainpage/Mainpage";
-
 import VendorPage from "./Pages/Vendor/VendorPage";
+import CreateMenu from "./Components/Forms/create.menu.form";
 
 function App() {
   return (
@@ -22,6 +21,7 @@ function App() {
         <Route path="vendor_sign_up" element={<VendorSignupForm />} />
 
         <Route path="vendor/:vendor_slug" element={<VendorPage />} />
+        <Route path="create_menu" element={<CreateMenu />} />
       </Routes>
     </div>
   );

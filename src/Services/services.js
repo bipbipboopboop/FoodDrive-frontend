@@ -1,3 +1,6 @@
+import { signUpAPI } from "./apiURL";
+import axios from "../Services/api";
+
 export const handleOrderSubmit = ({ cartInfo, event }) => {
   console.log({ cartInfo });
 };
@@ -22,7 +25,17 @@ export const addToCart = ({ setCart, cart, itemToAdd, quantity }) => {
   setCart(updatedCart);
 };
 
-export const handleSignIn = () => {};
+export const handleSignIn = async ({ userInfo }) => {
+  const url = "/auth/jwt/create";
+  console.log({ userInfo });
+  try {
+    const responseData = await axios.post(url, JSON.stringify(userInfo));
+    return responseData;
+  } catch (error) {
+    console.log({ error });
+    return 404;
+  }
+};
 export const handleSignOut = () => {};
 
 export const getReccLocation = (setLocationList) => {
@@ -114,4 +127,19 @@ export const getMenu = (setMenu, vendor_slug) => {
     },
   ];
   setMenu(vendor_slug === "frontier" ? defaultMenu : []);
+};
+
+const createVendor = async ({ vendorInfo }) => {
+  const response = await axios.post();
+  return response;
+};
+const createShop = async ({ shopInfo }) => {
+  const response = await axios.post();
+  return response;
+};
+const handleSubmit = ({ userInfo, shopInfo }) => {
+  const userResponse = createVendor(userInfo);
+  if (userResponse === 200) {
+    const shopResponse = createShop(shopInfo);
+  }
 };

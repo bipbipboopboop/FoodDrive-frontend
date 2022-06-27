@@ -48,7 +48,7 @@ const Navbar = () => {
             <CircleButton src={cart} onClick={handleOpenSecondary} />
             <CircleButton
               src={store}
-              onClick={() => navigate("/create_shop")}
+              onClick={() => navigate("/create_menu")}
             />
             <CircleButton
               src={Logout}
