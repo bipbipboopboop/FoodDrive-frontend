@@ -12,7 +12,10 @@ import {
 import Logo from "../../Images/Logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
-import { getUserInfo, handleSignIn } from "../../Services/auth.services";
+import {
+  storeUserInfo as getUserInfo,
+  handleSignIn,
+} from "../../Services/auth.services";
 import { UserContext } from "../../Context/user.context";
 
 const Signin = ({ open, handleClose }) => {
@@ -52,7 +55,7 @@ const Signin = ({ open, handleClose }) => {
                 alert("Wrong email or password");
               } else {
                 setIsLoggedIn(true);
-                const userInfo = await getUserInfo();
+                const userInfo = getUserInfo();
                 setUser(userInfo);
                 navigate("/");
                 handleClose();
