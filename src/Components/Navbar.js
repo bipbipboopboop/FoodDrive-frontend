@@ -1,26 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+import Signin from "./Forms/signin.form";
+
+import { UserContext } from "../Context/user.context";
 
 import cart from "../Images/Cart.svg";
 import profile from "../Images/User.svg";
 import store from "../Images/Store.svg";
+import logo from "../Images/Logo.png";
+import logout from "../Images/Logout.svg";
 
-import Logo from "../Images/Logo.png";
-import Logout from "../Images/Logout.svg";
+import { Nav, CircleButton, SVG } from "./Styles/styles";
 
 import useModal from "../Hooks/useModal";
-import { Nav, CircleButton, SVG } from "./Styles/styles";
-import Signin from "./Forms/signin.form";
 import CartModal from "./Modals/Cart.modal";
-import { useContext } from "react";
-import { UserContext } from "../Context/user.context";
+
 import { handleSignOut } from "../Services/auth.services";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const isVendor = true;
 
-  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const { isLoggedIn, setIsLoggedIn, isVendor } = useContext(UserContext);
   const {
     open,
     handleOpen,
@@ -34,7 +35,7 @@ const Navbar = () => {
     <Nav>
       <div>
         <Link to="/">
-          <SVG src={Logo} />
+          <SVG src={logo} />
         </Link>
       </div>
       <div
@@ -57,7 +58,7 @@ const Navbar = () => {
               ""
             )}
             <CircleButton
-              src={Logout}
+              src={logout}
               onClick={() => {
                 handleSignOut(setIsLoggedIn);
                 navigate("/");

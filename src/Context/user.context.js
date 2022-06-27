@@ -1,22 +1,33 @@
 import React, { createContext, useState } from "react";
 import { useEffect } from "react";
-import { getAuth } from "../Services/auth.services";
+import { getAuth, getUserInfo } from "../Services/auth.services";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(localStorage.getItem("user"));
+  const [user, setUser] = useState(getUserInfo());
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isVendor, setIsVendor] = useState(
+    getUserInfo() && getUserInfo().is_vendor // Very toxic code and should be changed
+  );
 
   useEffect(() => {
-    const auth = getAuth();
-    if (auth !== null) {
+    if (user) {
       setIsLoggedIn(true);
     }
-  }, [isLoggedIn]);
+  }, [user]);
 
   return (
-    <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>
+    <UserContext.Provider
+      value={{
+        user,
+        setUser,
+        isLoggedIn,
+        setIsLoggedIn,
+        isVendor,
+        setIsVendor,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

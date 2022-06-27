@@ -36,7 +36,7 @@ export const handleSignIn = async ({ loginInfo }) => {
     const loginResponse = await api.post(url, JSON.stringify(loginInfo));
     const tokens = loginResponse.data;
     storeAuth(tokens);
-    storeUserInfo();
+    await storeUserInfo();
     return tokens;
   } catch (error) {
     console.log({ error });
