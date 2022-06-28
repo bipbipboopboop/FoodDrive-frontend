@@ -62,6 +62,7 @@ export const getMyStore = async () => {
   const getOwnerResponse = await api.get(url);
   const ownerInfo = getOwnerResponse.data;
   const storeInfo = ownerInfo.shop;
+  //console.log({ ownerInfo, storeInfo });
   return storeInfo;
 };
 
@@ -113,7 +114,8 @@ export const handleEditMenu = async (values) => {
 export const createMenu = async (menuInfo) => {
   const myStore = await getMyStore();
   const storeID = myStore.id;
-  const payload = { ...menuInfo, id: storeID, slug: slugify(menuInfo.title) };
+  console.log({ storeID });
+  const payload = { ...menuInfo, shop: storeID, slug: slugify(menuInfo.title) };
 
   const url = "store/products/";
   try {
