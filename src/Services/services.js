@@ -1,5 +1,5 @@
 import api from "../Services/api";
-import { getUserInfo } from "./auth.services";
+import { getOwnerInfo } from "./auth.services";
 
 export const handleOrderSubmit = ({ cartInfo, event }) => {
   console.log({ cartInfo });
@@ -55,11 +55,23 @@ export const handleVisit = async ({ shopID }) => {
   }
 };
 
-export const getShop = async () => {
+export const getMyShop = async (setMenu) => {
   const url = "store/owners/me/";
   const getOwnerResponse = await api.get(url);
   const ownerInfo = getOwnerResponse.data;
   const storeInfo = ownerInfo.shop;
   console.log(storeInfo);
-  return storeInfo;
+  setMenu(storeInfo);
+};
+
+export const handleEditShop = async ({ newShopInfo, shopID }) => {
+  console.log({ newShopInfo, shopID });
+  const url = `store/shops/${shopID}/`;
+  try {
+    const response = await api.put(url, newShopInfo);
+    console.log({ response });
+  } catch (error) {
+    console.log({ error });
+    return 404;
+  }
 };

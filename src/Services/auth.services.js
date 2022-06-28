@@ -22,6 +22,11 @@ export const getUserInfo = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
 
+export const getUserID = () => {
+  const userInfo = getUserInfo();
+  return userInfo.id;
+};
+
 export const storeUserInfo = async () => {
   const url = "/auth/users/me";
   const response = await api.get(url);
@@ -46,4 +51,18 @@ export const handleSignIn = async ({ loginInfo }) => {
 export const handleSignOut = (setIsLoggedIn) => {
   localStorage.clear();
   setIsLoggedIn(false);
+};
+
+// Owner
+// _____________________________________________________________________________
+export const getOwnerInfo = async () => {
+  const url = "/store/owners/me";
+  try {
+    const ownerResponse = await api.get(url);
+    const ownerInfo = ownerResponse.data;
+    return ownerInfo;
+  } catch (error) {
+    console.log({ error });
+    return 404;
+  }
 };
