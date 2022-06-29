@@ -6,6 +6,7 @@ import { Formik, Form, Field } from "formik";
 import { RedButton } from "../Styles/styles";
 import { signUpAPI } from "../../Services/apiURL";
 import { Link, useNavigate } from "react-router-dom";
+import { handleSignUp } from "../../Services/auth.services";
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -14,56 +15,58 @@ const SignupForm = () => {
       <Formik
         initialValues={{
           email: "",
+          username: "",
           password: "",
           re_password: "",
           first_name: "",
           last_name: "",
           is_vendor: false,
         }}
-        onSubmit={(values) => {
-          if (values.password === values.re_password) {
-            fetch(signUpAPI, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(values),
-            })
-              .then((res) => (res.status === 200 ? res.json() : "Fail")) //This code is toxic and would be changed
-              .then((res) => {
-                if (res !== "Fail") {
-                  navigate("/");
-                  alert("Success, log in to start ordering!");
-                } else {
-                  alert(res);
-                }
-              });
+        onSubmit={async (values) => {
+          const response = await handleSignUp({ userInfo: values });
+          if (response !== 404) {
+            navigate("/");
           } else {
-            alert("Passwords do not match!");
+            alert(response);
           }
-          console.log(values);
         }}
       >
-        {({ values }) => (
+        {({}) => (
           <Form>
             <h3>Sign Up</h3>
             <div>
-              <label htmlFor="email">Email : </label>
+              <label htmlFor="email" id="email">
+                Email :
+              </label>
               <Field type="email" name="email" />
             </div>
             <div>
-              <label htmlFor="first_name">First Name : </label>
+              <label htmlFor="text" id="username">
+                Username :
+              </label>
+              <Field type="text" name="username" />
+            </div>
+            <div>
+              <label htmlFor="first_name" id="first_name">
+                First Name :
+              </label>
               <Field type="text" name="first_name" />
-              <label htmlFor="last_name">Last Name : </label>
+              <label htmlFor="last_name" id="last_name">
+                Last Name :
+              </label>
               <Field type="text" name="last_name" />
             </div>
-            <div></div>
+
             <div>
-              <label htmlFor="password">Password : </label>
+              <label htmlFor="password" id="password">
+                Password :
+              </label>
               <Field type="password" name="password" />
             </div>
             <div>
-              <label htmlFor="re_password">Confirm Password : </label>
+              <label htmlFor="re_password" id="re_password">
+                Confirm Password :
+              </label>
               <Field type="password" name="re_password" />
             </div>
 

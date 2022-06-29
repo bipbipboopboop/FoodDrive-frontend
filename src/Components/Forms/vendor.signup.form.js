@@ -5,6 +5,7 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import { RedButton, SVG } from "../Styles/styles";
 import hawker from "../../Images/hawker-pic.webp";
+import { handleVendorSignUp } from "../../Services/auth.services";
 
 const VendorSignupForm = () => {
   return (
@@ -13,17 +14,20 @@ const VendorSignupForm = () => {
         initialValues={{
           email: "",
           password: "",
+          username: "",
           confirm_password: "",
           first_name: "",
           last_name: "",
           name: "",
           description: "",
           address: "",
+          image_link: "",
           is_vendor: true,
         }}
         onSubmit={(values) => {
-          const vendorInfo = {
+          const userInfo = {
             email: values.email,
+            username: values.username,
             password: values.password,
             re_password: values.confirm_password,
             first_name: values.first_name,
@@ -34,11 +38,14 @@ const VendorSignupForm = () => {
             name: values.name,
             description: values.description,
             address: values.address,
+            slug: "",
+            image_link: values.image_link,
           };
-          console.log({ vendorInfo, shopInfo });
+          console.log({ userInfo, shopInfo });
+          handleVendorSignUp({ userInfo, shopInfo });
         }}
       >
-        {({ values }) => (
+        {({}) => (
           <div style={{ display: "flex" }}>
             <SVG style={{ height: "85vh", width: "90vh" }} src={hawker} />
             <div
@@ -55,6 +62,10 @@ const VendorSignupForm = () => {
                 <div>
                   <label htmlFor="email">Email : </label>
                   <Field type="email" name="email" />
+                </div>
+                <div>
+                  <label htmlFor="username">Username : </label>
+                  <Field type="text" name="username" id="username" />
                 </div>
                 <div>
                   <label htmlFor="first_name">First Name : </label>
@@ -82,6 +93,10 @@ const VendorSignupForm = () => {
                 <div>
                   <label htmlFor="text">Shop Address</label>
                   <Field type="text" name="address" />
+                </div>
+                <div>
+                  <label htmlFor="image_link">Shop Image Link</label>
+                  <Field type="text" name="image_link" id="image_link" />
                 </div>
 
                 <RedButton type="submit">Create Account</RedButton>
