@@ -1,21 +1,23 @@
 import React, { createContext, useState } from "react";
 import { useEffect } from "react";
-import { getAuth, getUserInfo } from "../Services/auth.services";
+import useModal from "../Hooks/useModal";
+import { getUserInfo } from "../Services/auth.services";
+import Signin from "../Components/Modals/Signin.modal";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(getUserInfo());
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isVendor, setIsVendor] = useState(
-    // getUserInfo() && getUserInfo().is_vendor // Very toxic code and should be changed
-    false
-  );
+  const [isVendor, setIsVendor] = useState(false);
+
+  const { open, handleOpen, handleClose } = useModal();
 
   useEffect(() => {
     if (user) {
       setIsLoggedIn(true);
-      getUserInfo() && setIsVendor(getUserInfo().is_vendor); // Very toxic code and should be changed
+      const userInfo = getUserInfo();
+      userInfo && setIsVendor(userInfo.is_vendor);
     }
   }, [user]);
 
@@ -28,8 +30,10 @@ export const UserProvider = ({ children }) => {
         setIsLoggedIn,
         isVendor,
         setIsVendor,
+        openSignInModal: handleOpen,
       }}
     >
+      <Signin open={open} handleClose={handleClose} />
       {children}
     </UserContext.Provider>
   );

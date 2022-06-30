@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import Signin from "./Modals/Signin.modal";
+import useModal from "../Hooks/useModal";
+import CartModal from "./Modals/Cart.modal";
+
+import { handleSignOut } from "../Services/auth.services";
 
 import { UserContext } from "../Context/user.context";
 
@@ -10,26 +13,15 @@ import profile from "../Images/User.svg";
 import store from "../Images/Store.svg";
 import logo from "../Images/Logo.png";
 import logout from "../Images/Logout.svg";
-
 import { Nav, CircleButton, SVG } from "./Styles/styles";
-
-import useModal from "../Hooks/useModal";
-import CartModal from "./Modals/Cart.modal";
-
-import { handleSignOut } from "../Services/auth.services";
+import { NavbarButtons } from "./Styles/navbar.styles";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const { isLoggedIn, setIsLoggedIn, isVendor } = useContext(UserContext);
-  const {
-    open,
-    handleOpen,
-    handleClose,
-    secondaryOpen,
-    handleOpenSecondary,
-    handleCloseSecondary,
-  } = useModal();
+  const { isLoggedIn, setIsLoggedIn, isVendor, openSignInModal } =
+    useContext(UserContext);
+  const { open, handleOpen, handleClose } = useModal();
 
   return (
     <Nav>
@@ -38,17 +30,15 @@ const Navbar = () => {
           <SVG src={logo} />
         </Link>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          width: "300px",
-        }}
-      >
-        {!isLoggedIn ? <CircleButton src={profile} onClick={handleOpen} /> : ""}
+      <NavbarButtons>
+        {!isLoggedIn ? (
+          <CircleButton src={profile} onClick={openSignInModal} />
+        ) : (
+          ""
+        )}
         {isLoggedIn ? (
           <>
-            <CircleButton src={cart} onClick={handleOpenSecondary} />
+            <CircleButton src={cart} onClick={handleOpen} />
             {isVendor ? (
               <CircleButton
                 src={store}
@@ -68,11 +58,8 @@ const Navbar = () => {
         ) : (
           ""
         )}
-
-        <Signin open={open} handleClose={handleClose} />
-
-        <CartModal open={secondaryOpen} handleClose={handleCloseSecondary} />
-      </div>
+        <CartModal open={open} handleClose={handleClose} />
+      </NavbarButtons>
     </Nav>
   );
 };

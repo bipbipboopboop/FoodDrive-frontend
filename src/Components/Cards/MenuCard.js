@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../Context/user.context";
 
 import styled from "styled-components";
-
 import useModal from "../../Hooks/useModal";
 import OrderModal from "../Modals/Order.modal";
 
@@ -17,6 +17,16 @@ const CardContent = styled.div``;
 export default function MenuCard({ menuItem }) {
   const { open, handleOpen, handleClose } = useModal();
 
+  const { isLoggedIn, openSignInModal } = useContext(UserContext);
+
+  const handleClick = () => {
+    if (isLoggedIn) {
+      handleOpen();
+    } else {
+      openSignInModal();
+    }
+  };
+
   return (
     <AbstractCard>
       <CardImg src={menuItem.image_link} />
@@ -26,7 +36,8 @@ export default function MenuCard({ menuItem }) {
         <p>${menuItem.unit_price}</p>
       </CardContent>
       <CardActions>
-        <RedButton onClick={handleOpen}>Select</RedButton>
+        {/* <RedButton onClick={handleOpen}>Select</RedButton> */}
+        <RedButton onClick={handleClick}>Select</RedButton>
       </CardActions>
       <OrderModal menuItem={menuItem} open={open} handleClose={handleClose} />
     </AbstractCard>
