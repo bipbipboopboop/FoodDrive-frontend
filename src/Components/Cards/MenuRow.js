@@ -8,8 +8,8 @@ const MenuRow = ({ menu }) => {
         display: "flex",
         justifyContent: "center",
         margin: "10px",
+        overflowX: "scroll",
         backgroundColor: "white",
-        margin: "0px",
       }}
     >
       {menu.map((menuItem) => (
