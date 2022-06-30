@@ -61,6 +61,7 @@ export const getMyStore = async () => {
   const url = "store/owners/me/";
   const getOwnerResponse = await api.get(url);
   const ownerInfo = getOwnerResponse.data;
+  console.log({ ownerInfo });
   const storeInfo = ownerInfo.shop;
   //console.log({ ownerInfo, storeInfo });
   return storeInfo;
@@ -77,6 +78,7 @@ export const storeMyShop = async (setShopInfo) => {
 export const storeAllMyMenu = async (setMenu) => {
   const myStore = await getMyStore();
   const myStoreID = myStore.id;
+  console.log({ myStore });
   const url = `store/shops/${myStoreID}/products`;
   try {
     const response = await api.get(url);

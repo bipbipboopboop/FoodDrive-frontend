@@ -8,13 +8,14 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(getUserInfo());
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isVendor, setIsVendor] = useState(
-    getUserInfo() && getUserInfo().is_vendor // Very toxic code and should be changed
+    // getUserInfo() && getUserInfo().is_vendor // Very toxic code and should be changed
+    false
   );
 
   useEffect(() => {
     if (user) {
       setIsLoggedIn(true);
-      setIsVendor(true);
+      getUserInfo() && setIsVendor(getUserInfo().is_vendor); // Very toxic code and should be changed
     }
   }, [user]);
 

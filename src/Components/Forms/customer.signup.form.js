@@ -4,7 +4,7 @@ import React from "react";
 
 import { Formik, Form, Field } from "formik";
 import { RedButton } from "../Styles/styles";
-import { signUpAPI } from "../../Services/apiURL";
+
 import { Link, useNavigate } from "react-router-dom";
 import { handleSignUp } from "../../Services/auth.services";
 
