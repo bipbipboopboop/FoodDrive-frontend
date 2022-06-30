@@ -9,10 +9,10 @@ import { handleOrderSubmit } from "../../Services/services";
 
 const Cart = () => {
   const { cart } = useContext(CartContext);
+  console.log({ cart });
 
   return (
     <>
-      {/* {console.log({ cart })} */}
       <div>
         {cart &&
           cart.map((cartInfo, index) => (
@@ -31,7 +31,6 @@ const Cart = () => {
           "Cart is empty :("
         )}
       </CardActions>
-      {/* </div> */}
     </>
   );
 };

@@ -1,16 +1,12 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Modal } from "@mui/material";
 import { Box } from "@mui/system";
 import { Formik, Form, Field } from "formik";
 
-import {
-  SVG,
-  modalStyle,
-  SecondaryButton,
-  RedButton,
-} from "../../Components/Styles/styles";
+import { SVG, modalStyle, SecondaryButton, RedButton } from "../Styles/styles";
 import Logo from "../../Images/Logo.png";
-import { Link, useNavigate } from "react-router-dom";
 
 import { getUserInfo, handleSignIn } from "../../Services/auth.services";
 import { UserContext } from "../../Context/user.context";
@@ -18,6 +14,20 @@ import { UserContext } from "../../Context/user.context";
 const Signin = ({ open, handleClose }) => {
   const navigate = useNavigate();
   const { setUser, setIsLoggedIn } = useContext(UserContext);
+
+  const handleSubmit = async (values) => {
+    const response = await handleSignIn({ loginInfo: values });
+    if (response === 404) {
+      alert("Wrong email or password");
+    } else {
+      setIsLoggedIn(true);
+      const userInfo = getUserInfo();
+      await setUser(userInfo);
+      navigate("/");
+      handleClose();
+    }
+  };
+
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={modalStyle}>
@@ -35,52 +45,61 @@ const Signin = ({ open, handleClose }) => {
               <SVG src={Logo} />
             </div>
             <div>
-              <Link
-                to="/signup"
-                style={{ textDecoration: "none" }}
-                onClick={handleClose}
+              <SecondaryButton
+                onClick={() => {
+                  navigate("/signup");
+                  handleClose();
+                }}
               >
-                <SecondaryButton>Sign Up</SecondaryButton>
-              </Link>
+                Sign Up
+              </SecondaryButton>
             </div>
           </div>
           <Formik
             initialValues={{ email: "", password: "" }}
-            onSubmit={async (values) => {
-              const response = await handleSignIn({ loginInfo: values });
-              if (response === 404) {
-                alert("Wrong email or password");
-              } else {
-                setIsLoggedIn(true);
-                const userInfo = getUserInfo();
-                await setUser(userInfo);
-                navigate("/");
-                handleClose();
-              }
-            }}
+            onSubmit={handleSubmit}
           >
             {() => (
-              <div
+              <Form
                 style={{
                   display: "flex",
-                  padding: "30px",
                   backgroundColor: "white",
+                  flexDirection: "column",
+                  justifyContent: "space-around",
+                  height: "40vh",
+                  paddingLeft: "40px",
+                  paddingRight: "40px",
                 }}
               >
-                <Form>
+                <div>
                   <h3>Have an Account?</h3>
+
                   <div>
-                    <label htmlFor="email">Email : </label>
+                    <label htmlFor="email" id="email">
+                      Email :
+                    </label>
+                  </div>
+                  <div>
                     <Field type="email" name="email" />
                   </div>
                   <div>
-                    <label htmlFor="password">Password : </label>
+                    <label htmlFor="password" id="password">
+                      Password :
+                    </label>
+                  </div>
+                  <div>
                     <Field type="password" name="password" />
                   </div>
-
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
                   <RedButton type="submit">Sign In</RedButton>
-                </Form>
-              </div>
+                </div>
+              </Form>
             )}
           </Formik>
         </div>

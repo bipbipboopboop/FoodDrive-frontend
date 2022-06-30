@@ -10,6 +10,14 @@ import { handleSignUp } from "../../Services/auth.services";
 
 const SignupForm = () => {
   const navigate = useNavigate();
+  const handleSubmit = async (values) => {
+    const response = await handleSignUp({ userInfo: values });
+    if (response !== 404) {
+      navigate("/");
+    } else {
+      alert(response);
+    }
+  };
   return (
     <div>
       <Formik
@@ -22,54 +30,81 @@ const SignupForm = () => {
           last_name: "",
           is_vendor: false,
         }}
-        onSubmit={async (values) => {
-          const response = await handleSignUp({ userInfo: values });
-          if (response !== 404) {
-            navigate("/");
-          } else {
-            alert(response);
-          }
-        }}
+        onSubmit={handleSubmit}
       >
         {({}) => (
-          <Form>
-            <h3>Sign Up</h3>
-            <div>
-              <label htmlFor="email" id="email">
-                Email :
-              </label>
-              <Field type="email" name="email" />
-            </div>
-            <div>
-              <label htmlFor="text" id="username">
-                Username :
-              </label>
-              <Field type="text" name="username" />
-            </div>
-            <div>
-              <label htmlFor="first_name" id="first_name">
-                First Name :
-              </label>
-              <Field type="text" name="first_name" />
-              <label htmlFor="last_name" id="last_name">
-                Last Name :
-              </label>
-              <Field type="text" name="last_name" />
-            </div>
-
-            <div>
-              <label htmlFor="password" id="password">
-                Password :
-              </label>
-              <Field type="password" name="password" />
-            </div>
-            <div>
-              <label htmlFor="re_password" id="re_password">
-                Confirm Password :
-              </label>
-              <Field type="password" name="re_password" />
-            </div>
-
+          <Form
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <h1>Sign Up</h1>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <label htmlFor="email" id="email">
+                      Email :
+                    </label>
+                  </td>
+                  <td>
+                    <Field type="email" name="email" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="text" id="username">
+                      Username :
+                    </label>
+                  </td>
+                  <td>
+                    <Field type="text" name="username" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="first_name" id="first_name">
+                      First Name :
+                    </label>
+                  </td>
+                  <td>
+                    <Field type="text" name="first_name" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="last_name" id="last_name">
+                      Last Name :
+                    </label>
+                  </td>
+                  <td>
+                    <Field type="text" name="last_name" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="password" id="password">
+                      Password :
+                    </label>
+                  </td>
+                  <td>
+                    <Field type="password" name="password" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="re_password" id="re_password">
+                      Confirm Password :
+                    </label>
+                  </td>
+                  <td>
+                    <Field type="password" name="re_password" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
             <RedButton type="submit">Submit</RedButton>
           </Form>
         )}

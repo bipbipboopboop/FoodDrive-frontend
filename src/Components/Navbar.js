@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import Signin from "./Forms/signin.form";
+import Signin from "./Modals/Signin.modal";
 
 import { UserContext } from "../Context/user.context";
 
