@@ -63,7 +63,9 @@ const Navbar = () => {
           <SVG src={logo} />
         </Link>
       </div>
-      <WhiteSubHeader>{`Welcome! ${user?.first_name}`}</WhiteSubHeader>
+      {user && (
+        <WhiteSubHeader>{`Welcome! ${user?.first_name}`}</WhiteSubHeader>
+      )}
       <NavbarButtonDisplays>
         <NavbarButtons isLoggedIn={isLoggedIn} isVendor={isVendor} />
       </NavbarButtonDisplays>

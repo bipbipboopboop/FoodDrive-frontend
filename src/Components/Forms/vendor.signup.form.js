@@ -58,7 +58,7 @@ const VendorSignupForm = () => {
               }}
             >
               <Form>
-                <h3>Sign Up</h3>
+                <h3>Sign Up and start selling with us!</h3>
                 <table>
                   <tbody>
                     <tr>
