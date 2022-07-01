@@ -6,7 +6,6 @@ const MenuRow = ({ menu }) => {
     <div
       style={{
         display: "flex",
-        justifyContent: "center",
         margin: "10px",
         overflowX: "scroll",
         backgroundColor: "white",

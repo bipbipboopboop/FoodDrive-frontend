@@ -60,6 +60,10 @@ export const Nav = styled.div`
 export const AbstractCard = styled.div`
   width: 300px;
   height: 400px;
+  max-width: 300px;
+  max-height: 400px;
+  min-width: 300px;
+  min-height: 400px;
   padding: 10px;
   margin: 20px;
   border: solid;
