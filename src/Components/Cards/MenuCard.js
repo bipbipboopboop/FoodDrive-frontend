@@ -28,7 +28,8 @@ export default function MenuCard({ menuItem }) {
 
   return (
     <AbstractCard>
-      {<pre>{JSON.stringify(menuItem)}</pre>}
+      {/* {<pre>{JSON.stringify(menuItem)}</pre>} */}
+      <h5>{menuItem?.shop?.name}</h5>
       <CardImg src={menuItem?.image_link} />
       <CardContent>
         <h3>{menuItem?.title}</h3>
