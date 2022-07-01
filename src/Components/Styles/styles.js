@@ -105,3 +105,11 @@ export const RowWrap = styled.div`
   background: black;
   flex-wrap: wrap;
 `;
+
+//____________________________________
+export const WhiteSubHeader = styled.h4`
+  color: white;
+  margin: 0px;
+  padding: 0px;
+`;
+//____________________________________

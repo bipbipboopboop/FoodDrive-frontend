@@ -13,15 +13,48 @@ import profile from "../Images/User.svg";
 import store from "../Images/Store.svg";
 import logo from "../Images/Logo.png";
 import logout from "../Images/Logout.svg";
-import { Nav, CircleButton, SVG } from "./Styles/styles";
-import { NavbarButtons } from "./Styles/navbar.styles";
+import { Nav, CircleButton, SVG, WhiteSubHeader } from "./Styles/styles";
+import { NavbarButtonDisplays } from "./Styles/navbar.styles";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const { isLoggedIn, setIsLoggedIn, isVendor, openSignInModal } =
+  const { user, isLoggedIn, setIsLoggedIn, isVendor, openSignInModal } =
     useContext(UserContext);
   const { open, handleOpen, handleClose } = useModal();
+
+  const NavbarButtons = ({ isLoggedIn, isVendor }) => {
+    if (!isLoggedIn) {
+      return <CircleButton src={profile} onClick={openSignInModal} />;
+    } else if (isVendor) {
+      return (
+        <>
+          <CircleButton src={cart} onClick={handleOpen} />
+          <CircleButton src={store} onClick={() => navigate("/create_menu")} />
+          <CircleButton
+            src={logout}
+            onClick={() => {
+              handleSignOut(setIsLoggedIn);
+              navigate("/");
+            }}
+          />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <CircleButton src={cart} onClick={handleOpen} />
+          <CircleButton
+            src={logout}
+            onClick={() => {
+              handleSignOut(setIsLoggedIn);
+              navigate("/");
+            }}
+          />
+        </>
+      );
+    }
+  };
 
   return (
     <Nav>
@@ -30,36 +63,11 @@ const Navbar = () => {
           <SVG src={logo} />
         </Link>
       </div>
-      <NavbarButtons>
-        {!isLoggedIn ? (
-          <CircleButton src={profile} onClick={openSignInModal} />
-        ) : (
-          ""
-        )}
-        {isLoggedIn ? (
-          <>
-            <CircleButton src={cart} onClick={handleOpen} />
-            {isVendor ? (
-              <CircleButton
-                src={store}
-                onClick={() => navigate("/create_menu")}
-              />
-            ) : (
-              ""
-            )}
-            <CircleButton
-              src={logout}
-              onClick={() => {
-                handleSignOut(setIsLoggedIn);
-                navigate("/");
-              }}
-            />
-          </>
-        ) : (
-          ""
-        )}
-        <CartModal open={open} handleClose={handleClose} />
-      </NavbarButtons>
+      <WhiteSubHeader>{`Welcome! ${user?.first_name}`}</WhiteSubHeader>
+      <NavbarButtonDisplays>
+        <NavbarButtons isLoggedIn={isLoggedIn} isVendor={isVendor} />
+      </NavbarButtonDisplays>
+      <CartModal open={open} handleClose={handleClose} />
     </Nav>
   );
 };

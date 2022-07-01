@@ -12,12 +12,10 @@ const Main = () => {
     getMainpageMenu(setMenu);
   }, []);
 
-  const { user } = createContext(UserContext);
-  console.log(user);
   return (
     <div>
       <h1>Best Seller</h1>
-      {user && <h3>{user}</h3>}
+
       {menu && <MenuRow menu={menu} />}
       <LocationRow />
       <Footer />

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NavbarButtons = styled.div`
+export const NavbarButtonDisplays = styled.div`
   display: flex;
   justify-content: space-around;
   width: 300px;
