@@ -22,7 +22,7 @@ const CartItem = ({ cartItem }) => {
     image: "",
   }
   */
-  console.log({ cartItem });
+  // console.log({ cartItem });
   return (
     cartItem && (
       <div

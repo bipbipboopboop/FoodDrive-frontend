@@ -41,7 +41,7 @@ const VendorSignupForm = () => {
             slug: "",
             image_link: values.image_link,
           };
-          console.log({ userInfo, shopInfo });
+          // console.log({ userInfo, shopInfo });
           handleVendorSignUp({ userInfo, shopInfo });
         }}
       >
@@ -59,45 +59,96 @@ const VendorSignupForm = () => {
             >
               <Form>
                 <h3>Sign Up</h3>
-                <div>
-                  <label htmlFor="email">Email : </label>
-                  <Field type="email" name="email" />
-                </div>
-                <div>
-                  <label htmlFor="username">Username : </label>
-                  <Field type="text" name="username" id="username" />
-                </div>
-                <div>
-                  <label htmlFor="first_name">First Name : </label>
-                  <Field type="text" name="first_name" />
-                  <label htmlFor="last_name">Last Name : </label>
-                  <Field type="text" name="last_name" />
-                </div>
-                <div></div>
-                <div>
-                  <label htmlFor="password">Password : </label>
-                  <Field type="password" name="password" />
-                </div>
-                <div>
-                  <label htmlFor="confirm_password">Confirm Password : </label>
-                  <Field type="password" name="confirm_password" />
-                </div>
-                <div>
-                  <label htmlFor="name">Shop Name</label>
-                  <Field type="text" name="name" />
-                </div>
-                <div>
-                  <label htmlFor="description">Shop description</label>
-                  <Field type="text" name="description" />
-                </div>
-                <div>
-                  <label htmlFor="text">Shop Address</label>
-                  <Field type="text" name="address" />
-                </div>
-                <div>
-                  <label htmlFor="image_link">Shop Image Link</label>
-                  <Field type="text" name="image_link" id="image_link" />
-                </div>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <label htmlFor="email">Email : </label>
+                      </td>
+                      <td>
+                        <Field type="email" name="email" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="username">Username : </label>
+                      </td>
+                      <td>
+                        <Field type="text" name="username" id="username" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="first_name">First Name : </label>
+                      </td>
+                      <td>
+                        <Field type="text" name="first_name" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="last_name">Last Name : </label>
+                      </td>
+                      <td>
+                        <Field type="text" name="last_name" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="password">Password : </label>
+                      </td>
+                      <td>
+                        <Field type="password" name="password" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="confirm_password">
+                          Confirm Password :
+                        </label>
+                      </td>
+                      <td>
+                        <Field type="password" name="confirm_password" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="shop_name">Shop Name : </label>
+                      </td>
+                      <td>
+                        <Field type="text" name="name" id="shop_name" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="description">Shop description : </label>
+                      </td>
+                      <td>
+                        <Field
+                          type="text"
+                          name="description"
+                          id="description"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="address">Shop Address :</label>
+                      </td>
+                      <td>
+                        <Field type="text" name="address" id="address" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="image_link">Shop Image Link : </label>
+                      </td>
+                      <td>
+                        <Field type="text" name="image_link" id="image_link" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
                 <RedButton type="submit">Create Account</RedButton>
               </Form>

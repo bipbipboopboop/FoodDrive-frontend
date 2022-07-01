@@ -14,16 +14,15 @@ const LocationRow = () => {
 
   return (
     <RowWrap>
-      {locationList &&
-        locationList.map((loc, index) => (
-          <LocationCard
-            key={index}
-            locationInfo={loc}
-            name={loc.name}
-            image={loc.image}
-            vendorSlug={loc.vendor_slug}
-          />
-        ))}
+      {locationList?.map((loc, index) => (
+        <LocationCard
+          key={index}
+          locationInfo={loc}
+          name={loc.name}
+          image={loc.image}
+          vendorSlug={loc.vendor_slug}
+        />
+      ))}
     </RowWrap>
   );
 };

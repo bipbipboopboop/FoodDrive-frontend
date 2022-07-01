@@ -14,10 +14,9 @@ const Cart = () => {
   return (
     <>
       <div>
-        {cart &&
-          cart.map((cartInfo, index) => (
-            <CartItem key={index} cartItem={cartInfo} />
-          ))}
+        {cart?.map((cartInfo, index) => (
+          <CartItem key={index} cartItem={cartInfo} />
+        ))}
       </div>
 
       <CardActions>
