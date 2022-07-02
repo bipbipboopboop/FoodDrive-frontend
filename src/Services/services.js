@@ -1,3 +1,4 @@
+import produce from "immer";
 import api from "../Services/api";
 import { slugify } from "./helper.function";
 
@@ -8,21 +9,41 @@ export const handleOrderSubmit = ({ cartInfo, event }) => {
 export const addToCart = ({ setCart, cart, itemToAdd, quantity }) => {
   console.log({ cart, itemToAdd, quantity });
 
-  const existingCartItem = cart.find(
-    (cartItem) => cartItem.id === itemToAdd.id
-  );
-
-  var updatedCart = cart;
-  if (existingCartItem) {
-    updatedCart.map((cartItem) => {
-      return cartItem.id === itemToAdd.id
-        ? { ...cartItem, quantity }
-        : cartItem;
-    });
+  if (!cart) {
+    setCart([{ ...itemToAdd, quantity }]);
   } else {
-    updatedCart = [...cart, { ...itemToAdd, quantity: 1 }];
+    for (var idx = 0; idx < cart.length; idx++) {
+      const cartItem = cart[idx];
+      if (cartItem.id === itemToAdd.id) {
+        const newCart = produce(cart, (draft) => {
+          draft[idx].quantity += quantity;
+        });
+        setCart(newCart);
+        console.log({ newCart });
+        break;
+      }
+      const newCart = produce(cart, (draft) => {
+        draft.push({ ...itemToAdd, quantity });
+      });
+      setCart(newCart);
+    }
   }
-  setCart(updatedCart);
+
+  // const existingCartItem = cart?.find(
+  //   (cartItem) => cartItem.id === itemToAdd.id
+  // );
+
+  // var updatedCart = cart;
+  // if (existingCartItem) {
+  //   updatedCart.map((cartItem) => {
+  //     return cartItem.id === itemToAdd.id
+  //       ? { ...cartItem, quantity }
+  //       : cartItem;
+  //   });
+  // } else {
+  //   updatedCart = [...cart, { ...itemToAdd, quantity: 1 }];
+  // }
+  // setCart(updatedCart);
 };
 
 export const getReccLocation = async (setLocationList) => {

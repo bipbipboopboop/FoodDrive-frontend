@@ -9,7 +9,7 @@ import { handleOrderSubmit } from "../../Services/services";
 
 const Cart = () => {
   const { cart } = useContext(CartContext);
-  console.log({ cart });
+  // console.log({ cart });
 
   return (
     <>
@@ -18,7 +18,6 @@ const Cart = () => {
           <CartItem key={index} cartItem={cartInfo} />
         ))}
       </div>
-
       <CardActions>
         {cart ? (
           <RedButton
