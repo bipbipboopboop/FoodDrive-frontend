@@ -19,8 +19,14 @@ import { NavbarButtonDisplays } from "./Styles/navbar.styles";
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const { user, isLoggedIn, setIsLoggedIn, isVendor, openSignInModal } =
-    useContext(UserContext);
+  const {
+    user,
+    setUser,
+    isLoggedIn,
+    setIsLoggedIn,
+    isVendor,
+    openSignInModal,
+  } = useContext(UserContext);
   const { open, handleOpen, handleClose } = useModal();
 
   const NavbarButtons = ({ isLoggedIn, isVendor }) => {
@@ -47,7 +53,7 @@ const Navbar = () => {
           <CircleButton
             src={logout}
             onClick={() => {
-              handleSignOut(setIsLoggedIn);
+              handleSignOut(setIsLoggedIn, setUser);
               navigate("/");
             }}
           />

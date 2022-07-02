@@ -98,8 +98,9 @@ export const handleSignIn = async ({ loginInfo }) => {
     return 404;
   }
 };
-export const handleSignOut = (setIsLoggedIn) => {
+export const handleSignOut = (setIsLoggedIn, setUser) => {
   localStorage.clear();
+  setUser();
   setIsLoggedIn(false);
 };
 
