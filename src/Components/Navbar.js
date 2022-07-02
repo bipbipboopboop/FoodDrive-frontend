@@ -40,7 +40,7 @@ const Navbar = () => {
           <CircleButton
             src={logout}
             onClick={() => {
-              handleSignOut(setIsLoggedIn);
+              handleSignOut(setIsLoggedIn, setUser);
               navigate("/");
             }}
           />
