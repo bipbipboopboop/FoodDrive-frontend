@@ -10,8 +10,12 @@ export const addToCart = ({ setCart, cart, itemToAdd, quantity }) => {
   console.log({ cart, itemToAdd, quantity });
 
   if (!cart) {
+    // If cart is empty(undefined). Just add the item immediately into the cart
     setCart([{ ...itemToAdd, quantity }]);
   } else {
+    // Otherwise, check whether if the added item is already in the cart,
+    // if it is, update its quantity,
+    // otherwise, add it to the end of the cart.
     for (var idx = 0; idx < cart.length; idx++) {
       const cartItem = cart[idx];
       if (cartItem.id === itemToAdd.id) {
@@ -28,22 +32,6 @@ export const addToCart = ({ setCart, cart, itemToAdd, quantity }) => {
       setCart(newCart);
     }
   }
-
-  // const existingCartItem = cart?.find(
-  //   (cartItem) => cartItem.id === itemToAdd.id
-  // );
-
-  // var updatedCart = cart;
-  // if (existingCartItem) {
-  //   updatedCart.map((cartItem) => {
-  //     return cartItem.id === itemToAdd.id
-  //       ? { ...cartItem, quantity }
-  //       : cartItem;
-  //   });
-  // } else {
-  //   updatedCart = [...cart, { ...itemToAdd, quantity: 1 }];
-  // }
-  // setCart(updatedCart);
 };
 
 export const getReccLocation = async (setLocationList) => {
