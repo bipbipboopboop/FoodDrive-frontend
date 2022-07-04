@@ -23,7 +23,11 @@ const Signin = ({ open, handleClose }) => {
       setIsLoggedIn(true);
       const userInfo = getUserInfo();
       await setUser(userInfo);
-      navigate("/");
+      if (userInfo.is_vendor) {
+        navigate("/create_menu");
+      } else {
+        navigate("/");
+      }
       handleClose();
     }
   };

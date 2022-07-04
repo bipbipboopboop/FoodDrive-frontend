@@ -1,13 +1,16 @@
 import produce from "immer";
 import api from "../Services/api";
+import { getUserID } from "./auth.services";
 import { slugify } from "./helper.function";
 
-export const handleOrderSubmit = ({ cartInfo, event }) => {
-  console.log({ cartInfo });
+export const handleOrderSubmit = ({ cartInfo }) => {
+  const userID = getUserID();
+
+  console.log({ cartInfo, userID });
 };
 
 export const addToCart = ({ setCart, cart, itemToAdd, quantity }) => {
-  console.log({ cart, itemToAdd, quantity });
+  // console.log({ cart, itemToAdd, quantity });
 
   if (!cart) {
     // If cart is empty(undefined). Just add the item immediately into the cart
