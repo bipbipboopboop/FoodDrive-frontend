@@ -84,7 +84,7 @@ const Signin = ({ open, handleClose }) => {
                     </label>
                   </div>
                   <div>
-                    <Field type="email" name="email" />
+                    <Field type="email" name="email" required />
                   </div>
                   <div>
                     <label htmlFor="password" id="password">
@@ -92,7 +92,7 @@ const Signin = ({ open, handleClose }) => {
                     </label>
                   </div>
                   <div>
-                    <Field type="password" name="password" />
+                    <Field type="password" name="password" required />
                   </div>
                 </div>
                 <div

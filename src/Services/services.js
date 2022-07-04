@@ -51,7 +51,7 @@ export const getMainpageMenu = async (setMenu) => {
   setMenu(response.data);
 };
 
-export const getMenu = async (setMenu, shopID) => {
+export const storeMenu = async ({ setMenu, shopID }) => {
   const url = `store/shops/${shopID}/products`;
   const response = await api.get(url);
   setMenu(response.data);
@@ -102,6 +102,18 @@ export const storeAllMyMenu = async (setMenu) => {
   }
 };
 
+export const storeShopInfo = async ({ shopID, setShopInfo }) => {
+  const url = `store/shops/${shopID}/`;
+  try {
+    const response = await api.get(url);
+    setShopInfo(response.data);
+  } catch (error) {
+    const errorMsg = JSON.stringify(error.response.data);
+    alert(errorMsg);
+    return 404;
+  }
+};
+
 export const handleEditShop = async ({ newShopInfo, shopID }) => {
   const url = `store/shops/${shopID}/`;
   try {
@@ -136,6 +148,7 @@ export const createMenu = async (menuInfo) => {
     const response = await api.post(url, payload);
     alert(JSON.stringify(response.data));
   } catch (error) {
-    alert(error);
+    const errorMsg = JSON.stringify(error.response.data);
+    alert(errorMsg);
   }
 };
