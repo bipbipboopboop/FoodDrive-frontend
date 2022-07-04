@@ -31,8 +31,10 @@ const CartItem = ({ cartItem }) => {
         <div>
           <SVG src={cartItem.image_link} />
         </div>
-        <div>{cartItem.title}</div>
-        <div>{cartItem.quantity}</div>
+        <div>
+          <div>{`${cartItem.title}  -   ${cartItem.quantity}`}</div>
+          {/* <div>{cartItem.quantity}</div> */}
+        </div>
       </div>
     )
   );

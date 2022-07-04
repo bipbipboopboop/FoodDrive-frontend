@@ -19,7 +19,10 @@ const Cart = () => {
       </div>
       <CardActions>
         {cart ? (
-          <RedButton onClick={(cartInfo) => handleOrderSubmit({ cartInfo })}>
+          <RedButton
+            style={{ position: "absolute", bottom: 0 }}
+            onClick={(cartInfo) => handleOrderSubmit({ cartInfo })}
+          >
             Order Now
           </RedButton>
         ) : (
