@@ -41,10 +41,13 @@ export const handleSignUp = async ({ userInfo }) => {
   if (userInfo.password === userInfo.re_password) {
     try {
       const createdResponse = await api.post(url, JSON.stringify(userInfo));
+
       alert("Sign up successful!");
       return createdResponse.data;
     } catch (error) {
-      alert(error);
+      const errorMsg = JSON.stringify(error.response.data);
+      console.log({ errorMsg });
+      alert(errorMsg);
       return 404;
     }
   } else {
@@ -70,17 +73,24 @@ export const handleVendorSignUp = async ({ userInfo, shopInfo }) => {
     // Create a User first
     const userData = await handleSignUp({ userInfo });
     // Then Create Shop
-    const shopData = await createShop({ shopInfo });
-    if (userData !== 404 && shopData !== 404) {
+    if (userData !== 404) {
       // Map User to the Owner model, and link the user to the newly created shop
       // Link this user to the shop
-      await api.post(url, {
-        user: userData.id,
-        shop: shopData.id,
-      });
+      try {
+        const shopData = await createShop({ shopInfo });
+        await api.post(url, {
+          user: userData.id,
+          shop: shopData.id,
+        });
+      } catch (error) {
+        const errorMsg = JSON.stringify(error.response.data);
+        alert(errorMsg);
+        return 404;
+      }
     }
   } catch (error) {
-    alert(error);
+    const errorMsg = JSON.stringify(error.response.data);
+    alert(errorMsg);
   }
 };
 
