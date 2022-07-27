@@ -10,21 +10,26 @@ import Main from "./Pages/Mainpage/Mainpage";
 import VendorPage from "./Pages/Vendor/VendorPage";
 
 import ShopSettings from "./Pages/Vendor/ShopSettings";
+import Orders from "./Pages/Vendor/Orders";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Main />} />
+      <div className="h-100">
+        <Routes>
+          <Route path="/" element={<Main />} />
 
-        <Route path="signup" element={<SignupForm />} />
-        <Route path="vendor_sign_up" element={<VendorSignupForm />} />
+          <Route path="signup" element={<SignupForm />} />
 
-        <Route path="vendor/:shopID" element={<VendorPage />} />
-
-        <Route path="create_menu" element={<ShopSettings />} />
-      </Routes>
+          {/* Vendor */}
+          <Route path="vendor_sign_up" element={<VendorSignupForm />} />
+          <Route path="vendor/:shopID" element={<VendorPage />} />
+          <Route path="my_shop" element={<ShopSettings />} />
+          <Route path="my_orders" element={<Orders />} />
+          {/* Vendor */}
+        </Routes>
+      </div>
     </div>
   );
 }

@@ -13,6 +13,7 @@ import profile from "../Images/User.svg";
 import store from "../Images/Store.svg";
 import logo from "../Images/Logo.png";
 import logout from "../Images/Logout.svg";
+import orders from "../Images/Orders.svg";
 import { Nav, CircleButton, SVG, WhiteSubHeader } from "./Styles/styles";
 import { NavbarButtonDisplays } from "./Styles/navbar.styles";
 
@@ -35,8 +36,8 @@ const Navbar = () => {
     } else if (isVendor) {
       return (
         <>
-          <CircleButton src={cart} onClick={handleOpen} />
-          <CircleButton src={store} onClick={() => navigate("/create_menu")} />
+          <CircleButton src={store} onClick={() => navigate("/my_shop")} />
+          <CircleButton src={orders} onClick={() => navigate("/my_orders")} />
           <CircleButton
             src={logout}
             onClick={() => {
