@@ -16,6 +16,8 @@ import logout from "../Images/Logout.svg";
 import orders from "../Images/Orders.svg";
 import { Nav, CircleButton, SVG, WhiteSubHeader } from "./Styles/styles";
 import { NavbarButtonDisplays } from "./Styles/navbar.styles";
+import { updateMyCart } from "../Services/1.cart.services";
+import { CartContext } from "../Context/cart.context";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -28,7 +30,14 @@ const Navbar = () => {
     isVendor,
     openSignInModal,
   } = useContext(UserContext);
+  const { cartItems } = useContext(CartContext);
+
   const { open, handleOpen, handleClose } = useModal();
+
+  const handleCartClose = () => {
+    updateMyCart({ cartItems });
+    handleClose();
+  };
 
   const NavbarButtons = ({ isLoggedIn, isVendor }) => {
     if (!isLoggedIn) {
@@ -76,7 +85,7 @@ const Navbar = () => {
       <NavbarButtonDisplays>
         <NavbarButtons isLoggedIn={isLoggedIn} isVendor={isVendor} />
       </NavbarButtonDisplays>
-      <CartModal open={open} handleClose={handleClose} />
+      <CartModal open={open} handleClose={handleCartClose} />
     </Nav>
   );
 };

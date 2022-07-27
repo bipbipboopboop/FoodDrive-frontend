@@ -5,8 +5,9 @@ import styled from "styled-components";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { RedButton } from "../Styles/styles";
+
+import { updateMyCart } from "../../Services/1.cart.services";
 import { CartContext } from "../../Context/cart.context";
-import { addToCart } from "../../Services/services";
 
 const style = {
   position: "absolute",
@@ -34,12 +35,26 @@ const CardImg = styled.img`
 
 const OrderModal = ({ menuItem, open, handleClose }) => {
   const [quantity, setQuantity] = useState(1);
-  const { cart, setCart } = useContext(CartContext);
+
+  const { setCartRefresher } = useContext(CartContext);
+
+  const handleAddToCart = async () => {
+    await updateMyCart({
+      cartItems: [
+        {
+          id: menuItem?.id,
+          quantity,
+        },
+      ],
+    });
+    setCartRefresher((prev) => prev + 1);
+  };
 
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>
         <Card>
+          {/* <pre>{JSON.stringify({ menuItem })}</pre> */}
           <CardImg src={menuItem.image_link} />
           <h3>{menuItem.title}</h3>
           <p>{menuItem.description}</p>
@@ -78,13 +93,7 @@ const OrderModal = ({ menuItem, open, handleClose }) => {
               justifyContent: "center",
             }}
           >
-            <RedButton
-              onClick={() =>
-                addToCart({ setCart, cart, itemToAdd: menuItem, quantity })
-              }
-            >
-              Add To Cart
-            </RedButton>
+            <RedButton onClick={handleAddToCart}>Add To Cart</RedButton>
           </div>
         </Card>
       </Box>

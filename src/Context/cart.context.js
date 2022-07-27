@@ -1,13 +1,20 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { storeMyCart } from "../Services/1.cart.services";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // cart contains many products
-  const [cart, setCart] = useState();
+  const [cartItems, setCartItems] = useState();
+  const [cartRefresher, setCartRefresher] = useState(0);
+
+  useEffect(() => {
+    storeMyCart({ setter: setCartItems });
+  }, [cartRefresher]);
 
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
+    <CartContext.Provider
+      value={{ cartItems, setCartItems, cartRefresher, setCartRefresher }}
+    >
       {children}
     </CartContext.Provider>
   );

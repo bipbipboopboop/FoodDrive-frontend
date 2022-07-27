@@ -7,7 +7,7 @@ const FooterBorder = styled.div`
 `;
 
 const FooterDiv = styled.div`
-  height: 50vh;
+  height: 20vh;
   background-color: black;
   color: white;
 `;
