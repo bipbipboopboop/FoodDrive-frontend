@@ -42,3 +42,9 @@ export const createOrder = async () => {
   const url = "store/orders/";
   await api.post(url, {});
 };
+
+export const deleteCartItem = async ({ cartItem }) => {
+  const cartItemID = cartItem?.id;
+  const url = `store/carts/my_cart/cart_items/${cartItemID}`;
+  await api.delete(url);
+};
