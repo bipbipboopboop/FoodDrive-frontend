@@ -38,7 +38,7 @@ export const getMyStore = async () => {
   const url = "store/owners/me/";
   const getOwnerResponse = await api.get(url);
   const ownerInfo = getOwnerResponse.data;
-  console.log({ ownerInfo });
+  // console.log({ ownerInfo });
   const storeInfo = ownerInfo.shop;
   //console.log({ ownerInfo, storeInfo });
   return storeInfo;
@@ -55,7 +55,7 @@ export const storeMyShop = async (setShopInfo) => {
 export const storeAllMyMenu = async (setMenu) => {
   const myStore = await getMyStore();
   const myStoreID = myStore.id;
-  console.log({ myStore });
+  // console.log({ myStore });
   const url = `store/shops/${myStoreID}/products`;
   try {
     const response = await api.get(url);
@@ -102,18 +102,29 @@ export const handleEditMenu = async (values) => {
   await api.put(url, newMenu);
 };
 
-export const createMenu = async (menuInfo) => {
-  const myStore = await getMyStore();
-  const storeID = myStore.id;
-  console.log({ storeID });
-  const payload = { ...menuInfo, shop: storeID, slug: slugify(menuInfo.title) };
+export const createMenu = async ({ menuInfo }) => {
+  const payload = { ...menuInfo, slug: slugify(menuInfo.title) };
 
   const url = "store/products/";
   try {
-    const response = await api.post(url, payload);
-    alert(JSON.stringify(response.data));
+    await api.post(url, payload);
   } catch (error) {
     const errorMsg = JSON.stringify(error.response.data);
     alert(errorMsg);
   }
+};
+
+export const updateMyProduct = async ({ menuInfo }) => {
+  const url = `store/shops/my_shop/products/${menuInfo?.id}/`;
+  try {
+    await api.put(url, menuInfo);
+  } catch (error) {
+    const errorMsg = JSON.stringify(error.response.data);
+    alert(errorMsg);
+  }
+};
+
+export const deleteMyProduct = async ({ menuItem }) => {
+  const url = `store/shops/my_shop/products/${menuItem?.id}/`;
+  await api.delete(url);
 };

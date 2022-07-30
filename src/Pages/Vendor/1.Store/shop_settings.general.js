@@ -10,15 +10,14 @@ import {
   storeAllMyMenu,
 } from "../../../Services/services";
 
-import ShopMenuRow from "../../../Components/Cards/ShopMenuRow";
 import useModal from "../../../Hooks/useModal";
-import CreateMenuModal from "../../../Components/Modals/CreateMenu.modal";
+
 import { Link } from "react-router-dom";
 
 const ShopGeneralSettings = () => {
   const [myShopInfo, setMyShopInfo] = useState();
   const [menu, setMenu] = useState();
-  const { open, handleOpen, handleClose } = useModal();
+
   useEffect(() => {
     storeMyShop(setMyShopInfo);
     storeAllMyMenu(setMenu);

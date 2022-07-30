@@ -21,16 +21,14 @@ const CreateShopProducts = () => {
       <hr />
       <Formik
         initialValues={{
-          description: "",
-          image_link: "",
-          reviews: [],
-          shop: myStore?.id,
-          slug: "",
-          stock: 999,
           title: "",
+          description: "",
           unit_price: 0,
+          stock: 999,
+          slug: "",
+          image_link: "",
         }}
-        onSubmit={(values) => createMenu(values)}
+        onSubmit={(values) => createMenu({ menuInfo: values })}
       >
         {({ values }) => {
           const menuItem = {
@@ -46,6 +44,7 @@ const CreateShopProducts = () => {
             <div className="row">
               <div className="col">
                 <Form>
+                  <pre>{JSON.stringify(myStore)}</pre>
                   <table>
                     <tbody>
                       <tr>
