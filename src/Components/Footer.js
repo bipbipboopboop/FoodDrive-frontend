@@ -13,7 +13,7 @@ const FooterDiv = styled.div`
 `;
 const Footer = () => {
   return (
-    <FooterDiv>
+    <FooterDiv className="w-100" style={{ textAlign: "center" }}>
       <FooterBorder />
       Made by Cheng Deren & Ethan Chen
     </FooterDiv>

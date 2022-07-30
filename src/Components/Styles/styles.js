@@ -50,7 +50,7 @@ export const Nav = styled.div`
   display: flex;
   position: sticky;
   top: 0;
-  height: 200px;
+  height: 100px;
   justify-content: space-between;
   align-items: center;
   background-color: black;
@@ -59,6 +59,10 @@ export const Nav = styled.div`
 // Card
 // ________________________________
 export const AbstractCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   width: 300px;
   max-width: 300px;
   min-width: 300px;

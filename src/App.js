@@ -9,9 +9,11 @@ import Navbar from "./Components/Navbar";
 import Main from "./Pages/Mainpage/Mainpage";
 import VendorPage from "./Pages/Vendor/VendorPage";
 
-import ShopSettings from "./Pages/Vendor/ShopSettings";
+import ShopSettings from "./Pages/Vendor/shop_settings";
 import Orders from "./Pages/Vendor/Orders";
-import ShopGeneralSettings from "./Pages/Vendor/shop.settings.general";
+import ShopGeneralSettings from "./Pages/Vendor/1.Store/shop_settings.general";
+import ShopProducts from "./Pages/Vendor/2.Products/shop.products";
+import CreateShopProducts from "./Pages/Vendor/2.Products/shop.products.create";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="vendor/:shopID" element={<VendorPage />} />
           <Route path="my_shop" element={<ShopSettings />}>
             <Route path="general" element={<ShopGeneralSettings />} />
+            <Route path="products" element={<ShopProducts />} />
+            <Route path="create_products" element={<CreateShopProducts />} />
             <Route path="my_orders" element={<Orders />} />
           </Route>
           {/* Vendor */}

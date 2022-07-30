@@ -35,7 +35,7 @@ const Sidebar = () => {
         <h5>Store</h5>
         <NavLink
           style={{ textDecoration: "none" }}
-          to="/my_shop/general"
+          to="general"
           children={({ isActive }) =>
             navLinkChild({ isActive, childText: "General" })
           }
@@ -45,41 +45,33 @@ const Sidebar = () => {
         <h5>Products</h5>
         <NavLink
           style={{ textDecoration: "none" }}
-          to="/"
+          to="products"
           children={({ isActive }) =>
-            navLinkChild({ isActive, childText: "General" })
+            navLinkChild({ isActive, childText: "My Products" })
           }
         />
         <NavLink
           style={{ textDecoration: "none" }}
-          to="/"
+          to="create_products"
           children={({ isActive }) =>
-            navLinkChild({ isActive, childText: "General" })
-          }
-        />
-
-        <NavLink
-          style={{ textDecoration: "none" }}
-          to="/"
-          children={({ isActive }) =>
-            navLinkChild({ isActive, childText: "General" })
+            navLinkChild({ isActive, childText: "Create Products" })
           }
         />
       </div>
       <div className="p-3">
-        <h5>Payment</h5>
+        <h5>Orders</h5>
         <NavLink
           style={{ textDecoration: "none" }}
           to="/"
           children={({ isActive }) =>
-            navLinkChild({ isActive, childText: "General" })
+            navLinkChild({ isActive, childText: "Current Orders" })
           }
         />
         <NavLink
           style={{ textDecoration: "none" }}
           to="/"
           children={({ isActive }) =>
-            navLinkChild({ isActive, childText: "General" })
+            navLinkChild({ isActive, childText: "Past Orders" })
           }
         />
       </div>

@@ -29,6 +29,7 @@ export default function MenuCard({ menuItem }) {
   return (
     <AbstractCard>
       <h5>{menuItem?.shop?.name}</h5>
+
       <CardImg className="w-75 h-50" src={menuItem?.image_link} />
       <div className="h-50">
         <CardContent className="h-75">
