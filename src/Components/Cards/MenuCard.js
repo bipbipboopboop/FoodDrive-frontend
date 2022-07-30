@@ -28,17 +28,20 @@ export default function MenuCard({ menuItem }) {
 
   return (
     <AbstractCard>
-      {/* {<pre>{JSON.stringify(menuItem)}</pre>} */}
       <h5>{menuItem?.shop?.name}</h5>
-      <CardImg src={menuItem?.image_link} />
-      <CardContent>
-        <h3>{menuItem?.title}</h3>
-        <p>{menuItem?.description}</p>
-        <p>${menuItem?.unit_price}</p>
-      </CardContent>
-      <CardActions>
-        <RedButton onClick={handleClick}>Select</RedButton>
-      </CardActions>
+      <CardImg className="w-75 h-50" src={menuItem?.image_link} />
+      <div className="h-50">
+        <CardContent className="h-75">
+          <h3>{menuItem?.title}</h3>
+          <p>{menuItem?.description}</p>
+          <p>${menuItem?.unit_price}</p>
+        </CardContent>
+        <CardActions className="h-25 d-flex align-items-end">
+          <RedButton className="" onClick={handleClick}>
+            Select
+          </RedButton>
+        </CardActions>
+      </div>
       <OrderModal menuItem={menuItem} open={open} handleClose={handleClose} />
     </AbstractCard>
   );

@@ -17,7 +17,7 @@ const CartItem = ({ cartItem }) => {
 
   const decreaseQuantity = async () => {
     if (cartItem?.quantity == 1) {
-      handleDeleteCartItem();
+      await handleDeleteCartItem();
     } else {
       const newCartItem = {
         id: cartItem?.product?.id,

@@ -48,6 +48,7 @@ const OrderModal = ({ menuItem, open, handleClose }) => {
       ],
     });
     setCartRefresher((prev) => prev + 1);
+    handleClose();
   };
 
   return (
