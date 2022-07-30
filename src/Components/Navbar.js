@@ -41,8 +41,14 @@ const Navbar = () => {
     } else if (isVendor) {
       return (
         <>
-          <CircleButton src={store} onClick={() => navigate("/my_shop")} />
-          <CircleButton src={orders} onClick={() => navigate("/my_orders")} />
+          <CircleButton
+            src={store}
+            onClick={() => navigate("/my_shop/general")}
+          />
+          <CircleButton
+            src={orders}
+            onClick={() => navigate("/my_shop/my_orders")}
+          />
           <CircleButton
             src={logout}
             onClick={() => {

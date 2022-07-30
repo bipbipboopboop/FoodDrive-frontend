@@ -11,6 +11,7 @@ import VendorPage from "./Pages/Vendor/VendorPage";
 
 import ShopSettings from "./Pages/Vendor/ShopSettings";
 import Orders from "./Pages/Vendor/Orders";
+import ShopGeneralSettings from "./Pages/Vendor/shop.settings.general";
 
 function App() {
   return (
@@ -25,8 +26,10 @@ function App() {
           {/* Vendor */}
           <Route path="vendor_sign_up" element={<VendorSignupForm />} />
           <Route path="vendor/:shopID" element={<VendorPage />} />
-          <Route path="my_shop" element={<ShopSettings />} />
-          <Route path="my_orders" element={<Orders />} />
+          <Route path="my_shop" element={<ShopSettings />}>
+            <Route path="general" element={<ShopGeneralSettings />} />
+            <Route path="my_orders" element={<Orders />} />
+          </Route>
           {/* Vendor */}
         </Routes>
       </div>

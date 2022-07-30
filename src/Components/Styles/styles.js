@@ -50,6 +50,7 @@ export const Nav = styled.div`
   display: flex;
   position: sticky;
   top: 0;
+  height: 200px;
   justify-content: space-between;
   align-items: center;
   background-color: black;
