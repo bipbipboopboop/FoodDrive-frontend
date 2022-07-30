@@ -44,7 +44,7 @@ const CreateShopProducts = () => {
             <div className="row">
               <div className="col">
                 <Form>
-                  <pre>{JSON.stringify(myStore)}</pre>
+                  {/* <pre>{JSON.stringify(myStore)}</pre> */}
                   <table>
                     <tbody>
                       <tr>
