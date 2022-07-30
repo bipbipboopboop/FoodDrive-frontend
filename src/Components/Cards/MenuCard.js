@@ -32,7 +32,7 @@ export default function MenuCard({ menuItem }) {
       <CardImg className="w-75 h-50" src={menuItem?.image_link} />
       <div className="h-50">
         <CardContent className="h-75">
-          <h3>{menuItem?.title}</h3>
+          <h3 className="h-50">{menuItem?.title}</h3>
           <p>{menuItem?.description}</p>
           <p>${menuItem?.unit_price}</p>
         </CardContent>
