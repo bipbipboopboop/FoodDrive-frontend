@@ -30,6 +30,7 @@ const CartItem = ({ cartItem }) => {
 
   const handleDeleteCartItem = async () => {
     await deleteCartItem({ cartItem });
+    setCartRefresher((prev) => prev + 1);
   };
 
   return (
