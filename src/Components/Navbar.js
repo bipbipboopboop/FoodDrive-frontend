@@ -8,7 +8,15 @@ import { handleSignOut } from "../Services/auth.services";
 
 import { UserContext } from "../Context/user.context";
 
-import { cart, profile, store, logo, logout, orders } from "../Images/images";
+import {
+  cart,
+  profile,
+  store,
+  logo,
+  logout,
+  orders,
+  history,
+} from "../Images/images";
 import { Nav, CircleButton, SVG, WhiteSubHeader } from "./Styles/styles";
 import { NavbarButtonDisplays } from "./Styles/navbar.styles";
 
@@ -62,6 +70,10 @@ const Navbar = () => {
       return (
         <>
           <CircleButton src={cart} onClick={handleOpen} />
+          <CircleButton
+            src={history}
+            onClick={() => navigate("/order_history")}
+          />
           <CircleButton
             src={logout}
             onClick={() => {

@@ -4,5 +4,6 @@ import logout from "./Logout.svg";
 import orders from "./Orders.svg";
 import store from "./Store.svg";
 import profile from "./User.svg";
+import history from "./History.svg";
 
-export { cart, logo, logout, orders, store, profile };
+export { cart, logo, logout, orders, store, profile, history };

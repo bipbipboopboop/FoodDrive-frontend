@@ -14,6 +14,8 @@ import Orders from "./Pages/Vendor/Orders";
 import ShopGeneralSettings from "./Pages/Vendor/1.Store/shop_settings.general";
 import ShopProducts from "./Pages/Vendor/2.Products/shop.products";
 import CreateShopProducts from "./Pages/Vendor/2.Products/shop.products.create";
+import CustomerPastOrders from "./Pages/Customer/1.customer_order.history";
+import HistoryDetail from "./Pages/Customer/3.customer_order_history.detail";
 
 function App() {
   return (
@@ -35,6 +37,10 @@ function App() {
             <Route path="my_orders" element={<Orders />} />
           </Route>
           {/* Vendor */}
+
+          <Route path="order_history" element={<CustomerPastOrders />}>
+            <Route path=":history_id" element={<HistoryDetail />} />
+          </Route>
         </Routes>
       </div>
     </div>

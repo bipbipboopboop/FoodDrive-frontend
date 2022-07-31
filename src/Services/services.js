@@ -128,3 +128,8 @@ export const deleteMyProduct = async ({ menuItem }) => {
   const url = `store/shops/my_shop/products/${menuItem?.id}/`;
   await api.delete(url);
 };
+
+export const abstractStorer = async ({ setter, URL }) => {
+  const response = await api.get(URL);
+  setter(response?.data);
+};

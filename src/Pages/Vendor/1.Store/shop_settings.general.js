@@ -10,8 +10,6 @@ import {
   storeAllMyMenu,
 } from "../../../Services/services";
 
-import useModal from "../../../Hooks/useModal";
-
 import { Link } from "react-router-dom";
 
 const ShopGeneralSettings = () => {
