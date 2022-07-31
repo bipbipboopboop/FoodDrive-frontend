@@ -5,7 +5,6 @@ import useModal from "../Hooks/useModal";
 import CartModal from "./Modals/Cart.modal";
 
 import { handleSignOut } from "../Services/auth.services";
-
 import { UserContext } from "../Context/user.context";
 
 import {
@@ -20,9 +19,6 @@ import {
 import { Nav, CircleButton, SVG, WhiteSubHeader } from "./Styles/styles";
 import { NavbarButtonDisplays } from "./Styles/navbar.styles";
 
-import { updateMyCart } from "../Services/1.cart.services";
-import { CartContext } from "../Context/cart.context";
-
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -34,12 +30,10 @@ const Navbar = () => {
     isVendor,
     openSignInModal,
   } = useContext(UserContext);
-  const { cartItems } = useContext(CartContext);
 
   const { open, handleOpen, handleClose } = useModal();
 
-  const handleCartClose = () => {
-    updateMyCart({ cartItems });
+  const handleCartClose = async () => {
     handleClose();
   };
 

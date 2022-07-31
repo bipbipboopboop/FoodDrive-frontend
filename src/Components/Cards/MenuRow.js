@@ -9,8 +9,8 @@ const MenuRow = ({ menu }) => {
         overflowX: "scroll",
       }}
     >
-      {menu?.map((menuItem) => (
-        <MenuCard key={menuItem?.title} menuItem={menuItem} />
+      {menu?.map((menuItem, index) => (
+        <MenuCard key={index} menuItem={menuItem} />
       ))}
     </div>
   );

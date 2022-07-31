@@ -25,12 +25,12 @@ export const storeMyCart = async ({ setter }) => {
 export const updateCartItem = async ({ cartItem }) => {
   const updateCartItemURL = "store/carts/my_cart/cart_items/";
   const data = { product_id: cartItem?.id, quantity: cartItem?.quantity };
-  console.log({ data });
+  // console.log({ data });
   await api.post(updateCartItemURL, data);
 };
 
 export const updateMyCart = async ({ cartItems }) => {
-  console.log({ cartItems });
+  // console.log({ cartItems });
   if (cartItems) {
     for (const cartItem of cartItems) {
       await updateCartItem({ cartItem });

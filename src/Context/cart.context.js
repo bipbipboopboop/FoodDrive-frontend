@@ -10,7 +10,7 @@ export const CartProvider = ({ children }) => {
   const [cartRefresher, setCartRefresher] = useState(0);
 
   useEffect(() => {
-    storeMyCart({ setter: setCartItems });
+    user && storeMyCart({ setter: setCartItems });
   }, [cartRefresher, user]);
 
   return (
