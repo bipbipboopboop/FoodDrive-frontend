@@ -6,17 +6,13 @@ import { Formik, Form, Field } from "formik";
 import { RedButton } from "../Styles/styles";
 
 import { Link, useNavigate } from "react-router-dom";
-import { handleSignUp } from "../../Services/auth.services";
+import { handleCustomerSignUp } from "../../Services/auth.services";
 
 const SignupForm = () => {
   const navigate = useNavigate();
   const handleSubmit = async (values) => {
-    const response = await handleSignUp({ userInfo: values });
-    if (response !== 404) {
-      navigate("/");
-    } else {
-      alert(response);
-    }
+    const data = await handleCustomerSignUp({ userInfo: values });
+    data && navigate("/");
   };
   return (
     <div>

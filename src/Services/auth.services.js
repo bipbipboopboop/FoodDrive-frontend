@@ -37,30 +37,37 @@ export const storeUserInfo = async () => {
 
 export const handleSignUp = async ({ userInfo }) => {
   const url = "/auth/users/";
-  console.log({ userInfo });
-  if (userInfo.password === userInfo.re_password) {
-    try {
-      const createdResponse = await api.post(url, JSON.stringify(userInfo));
 
+  if (userInfo.password === userInfo.re_password) {
+    const createdResponse = await api.post(url, JSON.stringify(userInfo));
+    if (createdResponse?.status === 201) {
       alert("Sign up successful!");
-      return createdResponse.data;
-    } catch (error) {
-      const errorMsg = JSON.stringify(error.response.data);
-      console.log({ errorMsg });
-      alert(errorMsg);
-      return 404;
+      return createdResponse?.data;
     }
+    alert(createdResponse?.data);
+    return null;
   } else {
     alert("Passwords do not match!");
+    return null;
   }
 };
 
 export const handleCustomerSignUp = async ({ userInfo }) => {
   const url = "/store/customers/";
   try {
-    // Create a User first
+    /*
+    {
+        "id": int,
+        "username": str,
+        "email": str,
+        "first_name": str,
+        "last_name": str,
+        "is_vendor": boolean
+    }
+    */
     const userData = await handleSignUp({ userInfo });
-    // Then map this User to the Customer Model
+    const response = await api.post(url, { user_id: userData?.id });
+    return response?.data;
   } catch (error) {
     alert(error);
   }
