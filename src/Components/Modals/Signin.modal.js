@@ -24,7 +24,7 @@ const Signin = ({ open, handleClose }) => {
       const userInfo = getUserInfo();
       await setUser(userInfo);
       if (userInfo.is_vendor) {
-        navigate("/my_shop");
+        navigate("/my_shop/my_orders");
       } else {
         navigate("/");
       }

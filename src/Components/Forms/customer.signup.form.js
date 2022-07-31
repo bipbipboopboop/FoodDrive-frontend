@@ -105,7 +105,9 @@ const SignupForm = () => {
           </Form>
         )}
       </Formik>
-      <Link to="/vendor_sign_up">Sign up as Vendor</Link>
+      <div className="w-100 d-flex justify-content-center">
+        <Link to="/vendor_sign_up">Sign up as Vendor</Link>
+      </div>
     </div>
   );
 };
