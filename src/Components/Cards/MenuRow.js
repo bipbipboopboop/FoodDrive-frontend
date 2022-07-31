@@ -6,13 +6,11 @@ const MenuRow = ({ menu }) => {
     <div
       style={{
         display: "flex",
-        margin: "10px",
         overflowX: "scroll",
-        backgroundColor: "white",
       }}
     >
-      {menu.map((menuItem) => (
-        <MenuCard key={menuItem.title} menuItem={menuItem} />
+      {menu?.map((menuItem) => (
+        <MenuCard key={menuItem?.title} menuItem={menuItem} />
       ))}
     </div>
   );

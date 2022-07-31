@@ -47,8 +47,8 @@ const OrderRow = ({ order }) => {
         </div>
         <div>
           <RedButton
-            onClick={() => {
-              setDone({ order });
+            onClick={async () => {
+              await setDone({ order });
               setRefresher((prev) => prev + 1);
             }}
           >

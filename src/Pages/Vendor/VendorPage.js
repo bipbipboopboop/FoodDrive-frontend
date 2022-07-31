@@ -13,25 +13,36 @@ const VendorPage = () => {
     storeShopInfo({ shopID: params.shopID, setShopInfo });
   }, [params.shopID]);
 
-  console.log({ shopInfo });
   return (
     <>
-      <div>
-        <h1>{shopInfo?.name}</h1>
-        <h3>{shopInfo?.description}</h3>
-        <h3>{shopInfo?.address}</h3>
+      <div className="w-100 h-50 p-4 d-flex justify-content-between">
+        <div>
+          <h1>{shopInfo?.name}</h1>
+          <h5>{shopInfo?.description}</h5>
+          <h5>{`Location : ${shopInfo?.address}`}</h5>
+        </div>
+        <div className="w-50 d-flex justify-content-center">
+          <img className="h-100" src={shopInfo?.image_link} />
+        </div>
       </div>
-      <div>
-        <h3>Reviews:</h3>
-        {shopInfo?.reviews.map((review) => {
-          return (
-            <div>
-              <p>{`Anonymous Customer : ${review?.description}`}</p>
-            </div>
-          );
-        })}
+
+      <div className="w-100 p-4">
+        <h5>Reviews:</h5>
+        <div className="mh-25" style={{ overflow: "scroll" }}>
+          {shopInfo?.reviews.map((review) => {
+            return (
+              <div>
+                <p>{`Anonymous Customer : ${review?.description}`}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
-      {menu && <MenuRow menu={menu} />}
+
+      <div className="w-100 p-4" style={{ backgroundColor: "#f7f7f7" }}>
+        <h5>Menu:</h5>
+        <MenuRow menu={menu} />
+      </div>
     </>
   );
 };
