@@ -67,6 +67,13 @@ const Sidebar = () => {
             navLinkChild({ isActive, childText: "Current Orders" })
           }
         />
+        <NavLink
+          style={{ textDecoration: "none" }}
+          to="my_completed_orders"
+          children={({ isActive }) =>
+            navLinkChild({ isActive, childText: "Completed Orders" })
+          }
+        />
       </div>
     </Background>
   );

@@ -1,25 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { storeMyCompletedOrders } from "../../../Services/3.vendor.services";
+
 import {
   AbstractCard,
   CardContent,
   CardImg,
   RedButton,
 } from "../../../Components/Styles/styles";
-import { VendorContext } from "../../../Context/vendor.context";
 
-import {
-  setDone,
-  storeMyVendorOrders,
-} from "../../../Services/3.vendor.services";
-
-const ShopOrders = () => {
+const ShopCompletedOrders = () => {
   const [myOrders, setMyOrders] = useState();
-  const { refresher } = useContext(VendorContext);
-
   useEffect(() => {
-    storeMyVendorOrders({ setMyOrders });
-  }, [refresher]);
-
+    storeMyCompletedOrders({ setMyOrders });
+  }, []);
   return (
     <>
       <h3>Current Orders</h3>
@@ -33,10 +26,9 @@ const ShopOrders = () => {
   );
 };
 
-export default ShopOrders;
+export default ShopCompletedOrders;
 
 const OrderRow = ({ order }) => {
-  const { setRefresher } = useContext(VendorContext);
   return (
     <div className="w-100 px-5" style={{ border: "5px solid" }}>
       <div className="d-flex justify-content-between py-3">
@@ -44,16 +36,6 @@ const OrderRow = ({ order }) => {
           <p>{`Order ID : ${order?.id}`}</p>
           <p>{`Status : ${order?.order_status}`}</p>
           <p>Order Items :</p>
-        </div>
-        <div>
-          <RedButton
-            onClick={() => {
-              setDone({ order });
-              setRefresher((prev) => prev + 1);
-            }}
-          >
-            Done
-          </RedButton>
         </div>
       </div>
       <div className="d-flex mw-100" display={{ overflow: "scroll" }}>

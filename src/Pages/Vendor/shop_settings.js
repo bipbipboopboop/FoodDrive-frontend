@@ -3,6 +3,7 @@ import React from "react";
 import Sidebar from "./shop_settings.sidebar";
 
 import { Outlet } from "react-router-dom";
+import { VendorProvider } from "../../Context/vendor.context";
 
 const ShopSettings = () => {
   return (
