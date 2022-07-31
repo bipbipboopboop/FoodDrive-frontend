@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 import styled from "styled-components";
@@ -62,16 +62,9 @@ const Sidebar = () => {
         <h5>Orders</h5>
         <NavLink
           style={{ textDecoration: "none" }}
-          to="/"
+          to="my_orders"
           children={({ isActive }) =>
             navLinkChild({ isActive, childText: "Current Orders" })
-          }
-        />
-        <NavLink
-          style={{ textDecoration: "none" }}
-          to="/"
-          children={({ isActive }) =>
-            navLinkChild({ isActive, childText: "Past Orders" })
           }
         />
       </div>

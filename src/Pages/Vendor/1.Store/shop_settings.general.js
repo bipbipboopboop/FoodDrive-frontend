@@ -27,7 +27,7 @@ const ShopGeneralSettings = () => {
   return (
     <div>
       <h3>Shop Settings</h3>
-      <pre>{JSON.stringify(myShopInfo)}</pre>
+      {/* <pre>{JSON.stringify(myShopInfo)}</pre> */}
       <hr />
       <div>
         <h5>Site Information</h5>

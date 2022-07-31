@@ -1,4 +1,3 @@
-import produce from "immer";
 import React, { useEffect, useState } from "react";
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
@@ -9,8 +8,6 @@ const HistoryDetail = () => {
   const { myOrderHistory, data, columns } = useHistoryDetail();
   return (
     <div>
-      {/* <pre>{JSON.stringify(myOrderHistory)}</pre>
-      <pre>{JSON.stringify(data)}</pre> */}
       <Table data={data} columns={columns} />
     </div>
   );
@@ -24,13 +21,6 @@ const useHistoryDetail = () => {
 
   const columns = useMemo(
     () => [
-      //   {
-      //     Header: "Image",
-      //     accessor: "image_link",
-      //     Cell: (props) => <img className="w-100 h-100 p-3" src={props?.value} />,
-      //     width: "15vh",
-      //     height: "15vh",
-      //   },
       { Header: "Title", accessor: "product.title" },
       {
         Header: "Unit Price",

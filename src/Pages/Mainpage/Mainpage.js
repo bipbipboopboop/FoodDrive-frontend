@@ -4,7 +4,6 @@ import { getMainpageMenu } from "../../Services/services";
 
 import MenuRow from "../../Components/Cards/MenuRow";
 import LocationRow from "../../Components/Cards/LocationRow";
-import { UserContext } from "../../Context/user.context";
 
 const Main = () => {
   const [menu, setMenu] = useState();
@@ -14,7 +13,7 @@ const Main = () => {
 
   return (
     <div>
-      <h1>Best Seller</h1>
+      <h1 className="w-100 d-flex justify-content-center">Best Seller</h1>
 
       {menu && <MenuRow menu={menu} />}
       <LocationRow />

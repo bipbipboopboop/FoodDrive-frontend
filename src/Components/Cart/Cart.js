@@ -9,8 +9,8 @@ import { createOrder } from "../../Services/1.cart.services";
 const Cart = () => {
   const { cartItems, setCartRefresher } = useContext(CartContext);
 
-  const handleOrderSubmit = () => {
-    createOrder();
+  const handleOrderSubmit = async () => {
+    await createOrder();
     setCartRefresher((prev) => prev + 1);
   };
 

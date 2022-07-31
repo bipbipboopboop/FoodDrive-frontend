@@ -21,8 +21,13 @@ const Sidebar = () => {
   return (
     <Background className="w-25 h-100">
       <div className="p-3">
+        <h5>Current Orders</h5>
+        {myOrderHistory?.map((order, index) => (
+          <Order order={order} key={index} />
+        ))}
+      </div>
+      <div className="p-3">
         <h5>History</h5>
-
         {myOrderHistory?.map((order, index) => (
           <Order order={order} key={index} />
         ))}
