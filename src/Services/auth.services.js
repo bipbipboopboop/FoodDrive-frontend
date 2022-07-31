@@ -104,7 +104,6 @@ export const handleSignIn = async ({ loginInfo }) => {
     await storeUserInfo();
     return tokens;
   } catch (error) {
-    alert(error);
     return 404;
   }
 };
