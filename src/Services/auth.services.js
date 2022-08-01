@@ -39,7 +39,7 @@ export const handleSignUp = async ({ userInfo }) => {
   const url = "/auth/users/";
 
   if (userInfo.password === userInfo.re_password) {
-    const createdResponse = await api.post(url, JSON.stringify(userInfo));
+    const createdResponse = await api.post(url, userInfo);
     if (createdResponse?.status === 201) {
       alert("Sign up successful!");
       return createdResponse?.data;
@@ -66,8 +66,10 @@ export const handleCustomerSignUp = async ({ userInfo }) => {
     }
     */
     const userData = await handleSignUp({ userInfo });
-    const response = await api.post(url, { user_id: userData?.id });
-    return response?.data;
+    if (userData) {
+      const response = await api.post(url, { user_id: userData?.id });
+      return response?.data;
+    }
   } catch (error) {
     alert(error);
   }

@@ -113,7 +113,7 @@ const SignupFormik = (props) => {
               </tr>
             </tbody>
           </table>
-          <RedButton type="submit">Submit</RedButton>
+          <RedButton type="submit">Sign up</RedButton>
         </Form>
       )}
     </Formik>
