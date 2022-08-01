@@ -16,95 +16,7 @@ const SignupForm = () => {
   };
   return (
     <div>
-      <Formik
-        initialValues={{
-          email: "",
-          username: "",
-          password: "",
-          re_password: "",
-          first_name: "",
-          last_name: "",
-          is_vendor: false,
-        }}
-        onSubmit={handleSubmit}
-      >
-        {({}) => (
-          <Form
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <h1>Sign Up</h1>
-            <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <label htmlFor="email" id="email">
-                      Email :
-                    </label>
-                  </td>
-                  <td>
-                    <Field type="email" name="email" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="text" id="username">
-                      Username :
-                    </label>
-                  </td>
-                  <td>
-                    <Field type="text" name="username" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="first_name" id="first_name">
-                      First Name :
-                    </label>
-                  </td>
-                  <td>
-                    <Field type="text" name="first_name" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="last_name" id="last_name">
-                      Last Name :
-                    </label>
-                  </td>
-                  <td>
-                    <Field type="text" name="last_name" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="password" id="password">
-                      Password :
-                    </label>
-                  </td>
-                  <td>
-                    <Field type="password" name="password" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="re_password" id="re_password">
-                      Confirm Password :
-                    </label>
-                  </td>
-                  <td>
-                    <Field type="password" name="re_password" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <RedButton type="submit">Submit</RedButton>
-          </Form>
-        )}
-      </Formik>
+      <SignupFormik handleSubmit={handleSubmit}></SignupFormik>
       <div className="w-100 d-flex justify-content-center">
         <Link to="/vendor_sign_up">Sign up as Vendor</Link>
       </div>
@@ -113,3 +25,97 @@ const SignupForm = () => {
 };
 
 export default SignupForm;
+
+const SignupFormik = (props) => {
+  return (
+    <Formik
+      initialValues={{
+        email: "",
+        username: "",
+        password: "",
+        re_password: "",
+        first_name: "",
+        last_name: "",
+        is_vendor: false,
+      }}
+      onSubmit={props.handleSubmit}
+    >
+      {({}) => (
+        <Form
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <h1>Sign Up</h1>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <label htmlFor="email" id="email">
+                    Email :
+                  </label>
+                </td>
+                <td>
+                  <Field type="email" name="email" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="text" id="username">
+                    Username :
+                  </label>
+                </td>
+                <td>
+                  <Field type="text" name="username" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="first_name" id="first_name">
+                    First Name :
+                  </label>
+                </td>
+                <td>
+                  <Field type="text" name="first_name" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="last_name" id="last_name">
+                    Last Name :
+                  </label>
+                </td>
+                <td>
+                  <Field type="text" name="last_name" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="password" id="password">
+                    Password :
+                  </label>
+                </td>
+                <td>
+                  <Field type="password" name="password" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="re_password" id="re_password">
+                    Confirm Password :
+                  </label>
+                </td>
+                <td>
+                  <Field type="password" name="re_password" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <RedButton type="submit">Submit</RedButton>
+        </Form>
+      )}
+    </Formik>
+  );
+};

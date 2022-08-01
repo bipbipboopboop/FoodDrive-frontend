@@ -11,6 +11,61 @@ import Logo from "../../Images/Logo.png";
 import { getUserInfo, handleSignIn } from "../../Services/auth.services";
 import { UserContext } from "../../Context/user.context";
 
+const SigninFormik = (props) => {
+  return (
+    <Formik
+      initialValues={{
+        email: "",
+        password: "",
+      }}
+      onSubmit={props.handleSubmit}
+    >
+      {() => (
+        <Form
+          style={{
+            display: "flex",
+            backgroundColor: "white",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            height: "40vh",
+            paddingLeft: "40px",
+            paddingRight: "40px",
+          }}
+        >
+          <div>
+            <h3>Have an Account?</h3>
+
+            <div>
+              <label htmlFor="email" id="email">
+                Email :
+              </label>
+            </div>
+            <div>
+              <Field type="email" name="email" required />
+            </div>
+            <div>
+              <label htmlFor="password" id="password">
+                Password :
+              </label>
+            </div>
+            <div>
+              <Field type="password" name="password" required />
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <RedButton type="submit">Sign In</RedButton>
+          </div>
+        </Form>
+      )}
+    </Formik>
+  );
+};
+
 const Signin = ({ open, handleClose }) => {
   const navigate = useNavigate();
   const { setUser, setIsLoggedIn } = useContext(UserContext);
@@ -59,53 +114,7 @@ const Signin = ({ open, handleClose }) => {
               </SecondaryButton>
             </div>
           </div>
-          <Formik
-            initialValues={{ email: "", password: "" }}
-            onSubmit={handleSubmit}
-          >
-            {() => (
-              <Form
-                style={{
-                  display: "flex",
-                  backgroundColor: "white",
-                  flexDirection: "column",
-                  justifyContent: "space-around",
-                  height: "40vh",
-                  paddingLeft: "40px",
-                  paddingRight: "40px",
-                }}
-              >
-                <div>
-                  <h3>Have an Account?</h3>
-
-                  <div>
-                    <label htmlFor="email" id="email">
-                      Email :
-                    </label>
-                  </div>
-                  <div>
-                    <Field type="email" name="email" required />
-                  </div>
-                  <div>
-                    <label htmlFor="password" id="password">
-                      Password :
-                    </label>
-                  </div>
-                  <div>
-                    <Field type="password" name="password" required />
-                  </div>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <RedButton type="submit">Sign In</RedButton>
-                </div>
-              </Form>
-            )}
-          </Formik>
+          <SigninFormik handleSubmit={handleSubmit}></SigninFormik>
         </div>
       </Box>
     </Modal>

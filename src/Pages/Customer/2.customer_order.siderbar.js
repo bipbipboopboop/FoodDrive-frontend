@@ -22,15 +22,21 @@ const Sidebar = () => {
     <Background className="w-25 h-100">
       <div className="p-3">
         <h5>Current Orders</h5>
-        {myOrderHistory?.map((order, index) => (
-          <Order order={order} key={index} />
-        ))}
+        {myOrderHistory?.map(
+          (order, index) =>
+            order?.order_status === "Pending" && (
+              <Order order={order} key={index} />
+            )
+        )}
       </div>
       <div className="p-3">
         <h5>History</h5>
-        {myOrderHistory?.map((order, index) => (
-          <Order order={order} key={index} />
-        ))}
+        {myOrderHistory?.map(
+          (order, index) =>
+            order?.order_status === "Completed" && (
+              <Order order={order} key={index} />
+            )
+        )}
       </div>
     </Background>
   );

@@ -56,7 +56,7 @@ const OrderRow = ({ order }) => {
           </RedButton>
         </div>
       </div>
-      <div className="d-flex mw-100" display={{ overflow: "scroll" }}>
+      <div className="d-flex w-100" style={{ overflow: "scroll" }}>
         {order?.order_items?.map((item, index) => (
           <OrderCard key={index} orderItem={item} />
         ))}
@@ -67,7 +67,7 @@ const OrderRow = ({ order }) => {
 
 const OrderCard = ({ orderItem }) => {
   return (
-    <AbstractCard className="mx-0 mt-0">
+    <AbstractCard className="mt-0" style={{ marginLeft: 0 }}>
       {/* <pre className="w-100">{JSON.stringify(orderItem)}</pre> */}
       <div className="h-100">
         <CardContent className="h-75">
