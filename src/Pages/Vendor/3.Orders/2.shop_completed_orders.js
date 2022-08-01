@@ -15,7 +15,7 @@ const ShopCompletedOrders = () => {
   }, []);
   return (
     <>
-      <h3>Current Orders</h3>
+      <h3>Completed Orders</h3>
 
       <div className="d-flex flex-column">
         {myOrders?.map((item, index) => (
