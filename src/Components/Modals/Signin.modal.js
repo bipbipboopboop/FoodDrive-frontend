@@ -11,7 +11,7 @@ import Logo from "../../Images/Logo.png";
 import { getUserInfo, handleSignIn } from "../../Services/auth.services";
 import { UserContext } from "../../Context/user.context";
 
-const SigninFormik = ({ props }) => {
+const SigninFormik = (props) => {
   return (
     <Formik
       initialValues={{
