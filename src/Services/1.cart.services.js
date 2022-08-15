@@ -38,9 +38,11 @@ export const updateMyCart = async ({ cartItems }) => {
   }
 };
 
-export const createOrder = async () => {
-  const url = "store/orders/";
-  await api.post(url, {});
+export const createPayment = async () => {
+  const url = "payment/create-payment/";
+  const response = await api.post(url, {});
+  console.log({ responseInCreatePayment: response });
+  return response?.data?.url;
 };
 
 export const deleteCartItem = async ({ cartItem }) => {

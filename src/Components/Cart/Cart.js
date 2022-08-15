@@ -4,14 +4,19 @@ import { CartContext } from "../../Context/cart.context";
 import CartItem from "./CartItem";
 
 import { CardActions, RedButton } from "../Styles/styles";
-import { createOrder } from "../../Services/1.cart.services";
+import { createPayment } from "../../Services/1.cart.services";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems, setCartRefresher } = useContext(CartContext);
 
   const handleOrderSubmit = async () => {
-    await createOrder();
-    setCartRefresher((prev) => prev + 1);
+    const url = await createPayment();
+    console.log({ url });
+
+    if (url) {
+      window.location.replace(url);
+    }
   };
 
   return (
